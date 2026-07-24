@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -28,28 +28,28 @@ body{margin:0;}
 
 /* themes */
 :root{
-  --bg:#ffffff;--bgAlt:#f4f7f6;--cream:#f8f4ef;--ink:#333333;--sub:#5a615f;
-  --sage:#b8d0cd;--sageSolid:#b8d0cd;--accentText:#5f7d77;--white:#ffffff;
-  --blobSage:#cbe0db;--blobSand:#ecdcc7;--line:rgba(51,51,51,0.14);
-  --radius:0px;--btnRadius:0px;--enW:500;--partnerBg:#b8d0cd;
-  --cardBg:#f4f7f6;--cardBorder:1px solid rgba(51,51,51,0.08);
+  --bg:#ffffff;--bgAlt:#f4f6f9;--cream:#f8f4ef;--ink:#333333;--sub:#5a5f6a;
+  --sage:#b8c6d8;--sageSolid:#b8c6d8;--accentText:#5f7898;--white:#ffffff;
+  --blobSage:#c8d4e8;--blobSand:#ecdcc7;--line:rgba(51,51,51,0.14);
+  --radius:0px;--btnRadius:0px;--enW:500;--partnerBg:#b8c6d8;
+  --cardBg:#f4f6f9;--cardBorder:1px solid rgba(51,51,51,0.08);
   --enSize:clamp(46px,6.6vw,82px);
 }
 body[data-mode="soft"]{
-  --bg:#ffffff;--bgAlt:#f2f6f5;--cream:#faf6f1;--ink:#2f3b38;--sub:#586663;
-  --sage:#b8d0cd;--sageSolid:#b8d0cd;--accentText:#4f6f69;
-  --blobSage:#cfe3de;--blobSand:#eedfcb;--line:rgba(47,59,56,0.10);
-  --radius:18px;--btnRadius:999px;--partnerBg:#bdd6d2;
-  --cardBg:#f4f8f6;--cardBorder:1px solid rgba(47,59,56,0.05);
+  --bg:#ffffff;--bgAlt:#f2f6f5;--cream:#faf6f1;--ink:#2f3848;--sub:#586080;
+  --sage:#b8c6d8;--sageSolid:#b8c6d8;--accentText:#4f6888;
+  --blobSage:#c8d8e8;--blobSand:#eedfcb;--line:rgba(47,59,56,0.10);
+  --radius:18px;--btnRadius:999px;--partnerBg:#b8ccd8;
+  --cardBg:#f4f6f9;--cardBorder:1px solid rgba(47,59,56,0.05);
 }
-body[data-mode="soft"] .marquee-word{color:transparent;-webkit-text-stroke:1.5px #8aaba7;}
+body[data-mode="soft"] .marquee-word{color:transparent;-webkit-text-stroke:1.5px #8aaabf;}
 body[data-mode="soft"] .en-label{color:var(--accentText);}
 body[data-mode="bold"]{
-  --bg:#ffffff;--bgAlt:#f1f5f4;--cream:#faf6f0;--ink:#222a28;--sub:#525c59;
-  --sage:#b8d0cd;--sageSolid:#b8d0cd;--accentText:#2f4b46;
-  --blobSage:#c8ddd8;--blobSand:#e9d9c3;--line:rgba(34,42,40,0.18);
+  --bg:#ffffff;--bgAlt:#f1f5f4;--cream:#faf6f0;--ink:#222838;--sub:#525870;
+  --sage:#b8c6d8;--sageSolid:#b8c6d8;--accentText:#2f4868;
+  --blobSage:#c4d2e4;--blobSand:#e9d9c3;--line:rgba(34,42,40,0.18);
   --radius:0px;--btnRadius:0px;--partnerBg:#333333;
-  --cardBg:#f1f5f4;--cardBorder:1.5px solid #222a28;
+  --cardBg:#f1f5f4;--cardBorder:1.5px solid #222838;
   --enSize:clamp(48px,7.4vw,100px);
 }
 
@@ -66,10 +66,15 @@ header img{height:48px;width:auto;display:block;}
 #side-nav{position:fixed;top:50%;right:clamp(14px,2.4vw,34px);transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(14px,1.8vw,24px);}
 #side-nav a{text-decoration:none;color:#1a1a1a;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;letter-spacing:.18em;line-height:1;transition:opacity .28s ease, transform .28s cubic-bezier(.22,1,.36,1);transform-origin:right center;}
 #side-nav a:hover{transform:scale(1.32);}
+.svc-nav-wrap{position:relative;display:flex;flex-direction:column;align-items:flex-end;}
+.svc-sub{display:none;flex-direction:column;align-items:flex-end;gap:6px;margin-top:8px;padding:4px 0;}
+.svc-sub.open{display:flex;}
+.svc-sub a{font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:400;letter-spacing:.08em;color:#1a1a1a;text-decoration:none;white-space:nowrap;transition:transform .28s cubic-bezier(.22,1,.36,1);transform-origin:right center;}
+#side-nav .svc-sub a:hover{transform:none;opacity:.5;}
 
 /* section labels */
 .en-label{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--enSize);color:#ffffff;line-height:1.15;letter-spacing:0.06em;}
-.en-label-outline{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--enSize);color:#9aa8a5;text-shadow:0 1px 3px rgba(0,0,0,0.15);line-height:1.15;letter-spacing:0.06em;}
+.en-label-outline{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--enSize);color:#9aaab8;text-shadow:0 1px 3px rgba(0,0,0,0.15);line-height:1.15;letter-spacing:0.06em;}
 .ja-label{font-family:'Noto Sans JP',sans-serif;font-size:clamp(15px,1.4vw,20px);font-weight:400;color:var(--ink);margin-top:4px;}
 
 /* blob decorations */
@@ -218,7 +223,7 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 
 /* ── THEME SWITCHER ───────────────────── */
 #theme-pill{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:90;display:flex;align-items:center;gap:7px;background:rgba(51,51,51,0.94);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-radius:999px;padding:7px 9px 7px 16px;box-shadow:0 18px 44px -18px rgba(0,0,0,.55);}
-#theme-pill .pill-label{font-family:'Lato',sans-serif;font-size:10px;letter-spacing:.18em;color:#b8d0cd;}
+#theme-pill .pill-label{font-family:'Lato',sans-serif;font-size:10px;letter-spacing:.18em;color:#b8c6d8;}
 
 /* ── PRIVACY MODAL ────────────────────── */
 #privacy-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;padding:24px;}
@@ -233,7 +238,7 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 #privacy-body ul{padding-left:1.4em;}
 #privacy-body table{width:100%;border-collapse:collapse;margin:0 0 16px;font-size:13px;}
 #privacy-body table th,#privacy-body table td{border:1px solid #ddd;padding:7px 10px;vertical-align:top;text-align:left;}
-#privacy-body table th{background:#f4f7f6;font-weight:600;}
+#privacy-body table th{background:#f4f6f9;font-weight:600;}
 #privacy-body table td:first-child{white-space:nowrap;font-weight:500;width:40%;}
 </style>
 </head>
@@ -252,7 +257,15 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
   <!-- VERTICAL NAV -->
   <nav id="side-nav">
     <a href="#hero">HOME</a>
-    <a href="#service">SERVICE</a>
+    <div class="svc-nav-wrap">
+      <a href="#service" id="svc-nav-trigger">SERVICE</a>
+      <div class="svc-sub" id="svc-sub">
+        <a href="service-se-pg.html">システムエンジニアリングサービス</a>
+        <a href="service-contract-development.html">受託開発</a>
+        <a href="service-support.html">サポート</a>
+        <a href="service-useware.html">ユースウェア</a>
+      </div>
+    </div>
     <a href="#info">ABOUT</a>
     <a href="#partner">PARTNER</a>
     <a href="#recruit">RECRUIT</a>
@@ -537,7 +550,7 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
   <!-- BACK TO TOP -->
   <button id="back-top" aria-label="トップへ戻る">
     <svg class="blob-shape" viewBox="0 0 80 80" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-      <path d="M40,6 C52,4 68,10 74,22 C80,34 78,52 70,62 C62,72 46,78 34,74 C22,70 8,60 6,46 C4,32 10,14 22,8 C28,5 34,7 40,6 Z" fill="#b8d0cd"/>
+      <path d="M40,6 C52,4 68,10 74,22 C80,34 78,52 70,62 C62,72 46,78 34,74 C22,70 8,60 6,46 C4,32 10,14 22,8 C28,5 34,7 40,6 Z" fill="#b8c6d8"/>
     </svg>
     <svg class="arrow" width="18" height="18" viewBox="0 0 14 14" fill="none">
       <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -663,16 +676,16 @@ document.addEventListener('DOMContentLoaded', function(){
 const SVC_SLIDES = [
   { num:'01', id:'se-pg',      numLabel:'SE · PG',      title:'システムエンジニアリングサービス',
     body:'お客様先に技術者を常駐させ、IT関連の業務を支援致します。インフラ構築・運用保守から業務アプリケーション開発まで幅広く対応します。',
-    blobRadius:'42% 58% 63% 37% / 41% 44% 56% 59%', cardBg:'#b8d0cd', href:'service-se-pg.html' },
+    blobRadius:'42% 58% 63% 37% / 41% 44% 56% 59%', cardBg:'#b8c6d8', href:'service-se-pg.html' },
   { num:'02', id:'contract',   numLabel:'DEVELOPMENT',  title:'受託開発',
     body:'要件定義から運用まで一気通貫で伴走します。「何を作るべきか」から一緒に考え、開発・インフラの両領域を上流工程から支援します。',
     blobRadius:'65% 35% 28% 72% / 58% 42% 68% 32%', cardBg:'#eeddd0', href:'service-contract-development.html' },
   { num:'03', id:'support',    numLabel:'SUPPORT',      title:'企画・マーケティング、デザイン、カスタマーサポート',
     body:'システムの新しい運用提案や担当者変更時の操作説明など、導入後のサポートも充実。ハードウェア・ネットワーク障害時の各種保守サービスもご提供しております。',
-    blobRadius:'37% 63% 71% 29% / 65% 28% 72% 35%', cardBg:'#d0e4e0', href:'service-support.html' },
+    blobRadius:'37% 63% 71% 29% / 65% 28% 72% 35%', cardBg:'#c8d8e8', href:'service-support.html' },
   { num:'04', id:'useware',    numLabel:'USEWARE',      title:'コンピュータ及び関連機器の販売・ユースウェア業務',
     body:'ご購入後の導入・設定から教育支援まで、お客様が通常業務で支障なくシステムを運用できるよう各種支援メニューをご用意しています。',
-    blobRadius:'48% 52% 33% 67% / 72% 28% 58% 42%', cardBg:'#dce8e4', href:'service-useware.html' },
+    blobRadius:'48% 52% 33% 67% / 72% 28% 58% 42%', cardBg:'#d8e0ea', href:'service-useware.html' },
 ];
 
 // ── SCROLL REVEAL ─────────────────────────────────
@@ -721,6 +734,14 @@ function observeNew(el){
     });
   }, 50);
 }
+
+// ── SERVICE NAV DROPDOWN ──────────────────────────
+const svcTrigger = document.getElementById('svc-nav-trigger');
+const svcSub = document.getElementById('svc-sub');
+const svcWrap = svcTrigger.closest('.svc-nav-wrap');
+let svcTimer;
+svcWrap.addEventListener('mouseenter', () => { clearTimeout(svcTimer); svcSub.classList.add('open'); });
+svcWrap.addEventListener('mouseleave', () => { svcTimer = setTimeout(() => svcSub.classList.remove('open'), 150); });
 
 // ── SERVICE CAROUSEL ──────────────────────────────
 let activeSvc = 0;

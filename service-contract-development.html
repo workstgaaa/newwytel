@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -33,7 +33,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,25
 .svc-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 8px 32px -8px rgba(0,0,0,0.14);padding:12px 0 8px;min-width:220px;display:none;flex-direction:column;z-index:200;}
 .svc-drop.open{display:flex;}
 .svc-drop a{padding:11px 20px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:#333;text-decoration:none;letter-spacing:.04em;transition:background .15s;opacity:1 !important;}
-.svc-drop a:hover{background:#f4f8f6;}
+.svc-drop a:hover{background:#f4f6f9;}
 
 #back-top{position:fixed;bottom:clamp(24px,4vw,40px);right:clamp(24px,4vw,40px);z-index:100;width:100px;height:100px;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;padding:0;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;}
 #back-top.visible{opacity:1;pointer-events:auto;}
@@ -77,7 +77,7 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 
 <button id="back-top">
   <svg viewBox="0 0 80 80" width="100" height="100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;">
-    <path d="M40,6 C52,4 68,10 74,22 C80,34 78,52 70,62 C62,72 46,78 34,74 C22,70 8,60 6,46 C4,32 10,14 22,8 C28,5 34,7 40,6 Z" fill="#b8d0cd"></path>
+    <path d="M40,6 C52,4 68,10 74,22 C80,34 78,52 70,62 C62,72 46,78 34,74 C22,70 8,60 6,46 C4,32 10,14 22,8 C28,5 34,7 40,6 Z" fill="#b8c6d8"></path>
   </svg>
   <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;margin-bottom:1px;">
     <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -86,17 +86,17 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 </button>
 
 <!-- HERO -->
-<section style="padding-top:68px;background:#f4f7f6;position:relative;overflow:hidden;min-height:62vh;display:flex;align-items:center;">
-  <div style="position:absolute;z-index:0;pointer-events:none;filter:blur(2px);top:-80px;right:-80px;width:400px;height:400px;background:#cbe0db;opacity:0.4;animation:wy-blobA 14s ease-in-out infinite,wy-drift 19s ease-in-out infinite;"></div>
+<section style="padding-top:68px;background:#f4f6f9;position:relative;overflow:hidden;min-height:42vh;display:flex;align-items:center;">
+  <div style="position:absolute;z-index:0;pointer-events:none;filter:blur(2px);top:-80px;right:-80px;width:400px;height:400px;background:#c8d4e8;opacity:0.4;animation:wy-blobA 14s ease-in-out infinite,wy-drift 19s ease-in-out infinite;"></div>
   <div style="position:absolute;z-index:0;pointer-events:none;filter:blur(2px);bottom:-60px;left:-60px;width:260px;height:260px;background:#ecdcc7;opacity:0.35;animation:wy-blobB 12s ease-in-out infinite,wy-driftB 16s ease-in-out infinite;"></div>
   <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,8vw,120px) clamp(20px,4vw,40px);position:relative;z-index:2;width:100%;">
     <div data-reveal="">
-      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(52px,9vw,120px);color:#9aa8a5;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1;letter-spacing:.04em;">DEVELOPMENT</div>
-      <div style="font-size:clamp(13px,1.1vw,15px);color:#5a615f;letter-spacing:.2em;margin-top:8px;">受託開発</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(52px,9vw,120px);color:#9aaab8;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1;letter-spacing:.04em;">DEVELOPMENT</div>
+      <div style="font-size:clamp(13px,1.1vw,15px);color:#5a5f6a;letter-spacing:.2em;margin-top:8px;">受託開発</div>
     </div>
     <div data-reveal="" data-rd="120" style="margin-top:clamp(28px,3.5vw,44px);max-width:640px;">
       <p style="font-size:clamp(22px,2.6vw,34px);font-weight:700;line-height:1.5;color:#333;margin:0 0 20px;">要件定義から運用まで、<br>一気通貫で伴走する受託開発。</p>
-      <p style="font-size:clamp(14px,1.2vw,17px);line-height:2.1;color:#5a615f;margin:0;">「何を作るべきか」から一緒に考え、開発・インフラの両領域を上流工程から支援します。SESで培った多様な現場経験を土台に、お客様の課題を技術で解決します。</p>
+      <p style="font-size:clamp(14px,1.2vw,17px);line-height:2.1;color:#5a5f6a;margin:0;">「何を作るべきか」から一緒に考え、開発・インフラの両領域を上流工程から支援します。SESで培った多様な現場経験を土台に、お客様の課題を技術で解決します。</p>
     </div>
   </div>
 </section>
@@ -105,104 +105,104 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 <section id="about" style="background:#fff;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);scroll-margin-top:68px;">
   <div style="max-width:1100px;margin:0 auto;">
     <div data-reveal="" style="margin-bottom:clamp(48px,6vw,64px);">
-      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aa8a5;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1.1;letter-spacing:.06em;">ABOUT</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aaab8;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1.1;letter-spacing:.06em;">ABOUT</div>
       <div style="font-size:14px;color:#333;margin-top:6px;letter-spacing:.14em;">受託開発について</div>
     </div>
     <div data-reveal="" data-rd="80" style="display:flex;flex-direction:column;gap:clamp(20px,2.5vw,28px);max-width:72em;">
       <p style="font-size:clamp(20px,2.2vw,28px);font-weight:700;line-height:1.5;color:#333;margin:0;">構想段階から、運用のその先まで。</p>
-      <p style="font-size:clamp(14px,1.2vw,16px);line-height:2.2;color:#5a615f;margin:0;">Wytelの受託開発は、単なる「開発の請負」ではありません。要件定義・設計・開発・テスト・運用保守という5つの工程すべてに上流から関わり、お客様と同じ目線でプロジェクトを推進します。</p>
-      <p style="font-size:clamp(14px,1.2vw,16px);line-height:2.2;color:#5a615f;margin:0;">私たちの強みは、SESで数多くの現場を経験してきたエンジニアの実践知にあります。多様な業種・技術・開発体制の中で鍛えられたノウハウが、受託開発の品質を裏側から支えています。</p>
-      <p style="font-size:clamp(14px,1.2vw,16px);line-height:2.2;color:#5a615f;margin:0;">「まだ要件が固まっていない」「何から始めればいいかわからない」——そうした段階からご相談いただけるのがWytelの受託開発です。</p>
+      <p style="font-size:clamp(14px,1.2vw,16px);line-height:2.2;color:#5a5f6a;margin:0;">Wytelの受託開発は、単なる「開発の請負」ではありません。要件定義・設計・開発・テスト・運用保守という5つの工程すべてに上流から関わり、お客様と同じ目線でプロジェクトを推進します。</p>
+      <p style="font-size:clamp(14px,1.2vw,16px);line-height:2.2;color:#5a5f6a;margin:0;">私たちの強みは、SESで数多くの現場を経験してきたエンジニアの実践知にあります。多様な業種・技術・開発体制の中で鍛えられたノウハウが、受託開発の品質を裏側から支えています。</p>
+      <p style="font-size:clamp(14px,1.2vw,16px);line-height:2.2;color:#5a5f6a;margin:0;">「まだ要件が固まっていない」「何から始めればいいかわからない」——そうした段階からご相談いただけるのがWytelの受託開発です。</p>
     </div>
   </div>
 </section>
 
 <!-- AREAS -->
-<section id="areas" style="background:#f4f7f6;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);scroll-margin-top:68px;">
+<section id="areas" style="background:#f4f6f9;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);scroll-margin-top:68px;">
   <div style="max-width:1100px;margin:0 auto;">
     <div data-reveal="" style="margin-bottom:clamp(48px,6vw,64px);">
-      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aa8a5;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1.1;letter-spacing:.06em;">AREAS</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aaab8;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1.1;letter-spacing:.06em;">AREAS</div>
       <div style="font-size:14px;color:#333;margin-top:6px;letter-spacing:.14em;">対応可能領域</div>
-      <p data-reveal="" data-rd="60" style="margin:16px 0 0;font-size:clamp(14px,1.2vw,16px);color:#5a615f;">業務システムからWeb、モバイルアプリ、そしてAWSを中心としたクラウド基盤まで、幅広い領域をワンストップで対応します。</p>
+      <p data-reveal="" data-rd="60" style="margin:16px 0 0;font-size:clamp(14px,1.2vw,16px);color:#5a5f6a;">業務システムからWeb、モバイルアプリ、そしてAWSを中心としたクラウド基盤まで、幅広い領域をワンストップで対応します。</p>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,36px);margin-bottom:clamp(32px,4vw,48px);">
-      <div data-reveal="" data-rd="0" style="background:#fff;padding:clamp(28px,3.5vw,44px);border-top:3px solid #b8d0cd;border-radius:18px;">
-        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(24px,2.8vw,36px);color:#5f7d77;letter-spacing:.06em;margin-bottom:4px;">Development</div>
+      <div data-reveal="" data-rd="0" style="background:#fff;padding:clamp(28px,3.5vw,44px);border-top:3px solid #b8c6d8;border-radius:18px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(24px,2.8vw,36px);color:#5f7898;letter-spacing:.06em;margin-bottom:4px;">Development</div>
         <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#333;margin-bottom:clamp(18px,2.5vw,28px);">開発領域</div>
         <div style="display:flex;flex-direction:column;gap:20px;">
           <div>
-            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7d77;margin-bottom:8px;">業務システム開発</div>
-            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;margin:0;">基幹系システムの構築、モダナイズ・リプレース、業務フローに合わせた設計</p>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7898;margin-bottom:8px;">業務システム開発</div>
+            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a5f6a;margin:0;">基幹系システムの構築、モダナイズ・リプレース、業務フローに合わせた設計</p>
           </div>
           <div>
-            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7d77;margin-bottom:8px;">Webシステム開発</div>
-            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;margin:0;">BtoB／BtoC Webサービス、モダンフロントエンド、SPA／API／マイクロサービス</p>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7898;margin-bottom:8px;">Webシステム開発</div>
+            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a5f6a;margin:0;">BtoB／BtoC Webサービス、モダンフロントエンド、SPA／API／マイクロサービス</p>
           </div>
           <div>
-            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7d77;margin-bottom:8px;">アプリ開発</div>
-            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;margin:0;">iOS／Android企画〜開発、クロスプラットフォーム、SaaS型プロダクト</p>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7898;margin-bottom:8px;">アプリ開発</div>
+            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a5f6a;margin:0;">iOS／Android企画〜開発、クロスプラットフォーム、SaaS型プロダクト</p>
           </div>
         </div>
       </div>
-      <div data-reveal="" data-rd="120" style="background:#fff;padding:clamp(28px,3.5vw,44px);border-top:3px solid #b8d0cd;border-radius:18px;">
-        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(24px,2.8vw,36px);color:#5f7d77;letter-spacing:.06em;margin-bottom:4px;">Infrastructure</div>
+      <div data-reveal="" data-rd="120" style="background:#fff;padding:clamp(28px,3.5vw,44px);border-top:3px solid #b8c6d8;border-radius:18px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(24px,2.8vw,36px);color:#5f7898;letter-spacing:.06em;margin-bottom:4px;">Infrastructure</div>
         <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#333;margin-bottom:clamp(18px,2.5vw,28px);">インフラ領域</div>
         <div style="display:flex;flex-direction:column;gap:20px;">
           <div>
-            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7d77;margin-bottom:8px;">クラウド基盤（AWS）</div>
-            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;margin:0;">VPC設計、EC2／ECS／Lambda、RDS／DynamoDB、IAM／WAF／GuardDuty、コスト最適化、AWS移行支援</p>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7898;margin-bottom:8px;">クラウド基盤（AWS）</div>
+            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a5f6a;margin:0;">VPC設計、EC2／ECS／Lambda、RDS／DynamoDB、IAM／WAF／GuardDuty、コスト最適化、AWS移行支援</p>
           </div>
           <div>
-            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7d77;margin-bottom:8px;">オンプレ／ハイブリッド</div>
-            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;margin:0;">既存オンプレ環境の保守、ハイブリッド構成の最適化、監視（JP1 等）</p>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7898;margin-bottom:8px;">オンプレ／ハイブリッド</div>
+            <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a5f6a;margin:0;">既存オンプレ環境の保守、ハイブリッド構成の最適化、監視（JP1 等）</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- 技術スタック -->
-    <div data-reveal="" data-rd="200" style="background:#fff;padding:clamp(28px,3.5vw,40px);border-top:3px solid #b8d0cd;border-radius:18px;">
+    <div data-reveal="" data-rd="200" style="background:#fff;padding:clamp(28px,3.5vw,40px);border-top:3px solid #b8c6d8;border-radius:18px;">
       <div style="font-size:13px;font-weight:600;letter-spacing:.14em;color:#333;margin-bottom:clamp(20px,2.5vw,28px);">技術スタック</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(16px,2vw,24px);">
         <div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:.16em;color:#5f7d77;margin-bottom:8px;">BACKEND</div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:.16em;color:#5f7898;margin-bottom:8px;">BACKEND</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Java</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">C#</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Spring Boot</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Python</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">PHP</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Laravel</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Java</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">C#</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Spring Boot</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Python</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">PHP</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Laravel</span>
           </div>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:.16em;color:#5f7d77;margin-bottom:8px;">FRONTEND</div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:.16em;color:#5f7898;margin-bottom:8px;">FRONTEND</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">TypeScript</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Vue</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">React</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Next.js</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">HTML/CSS</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">TypeScript</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Vue</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">React</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Next.js</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">HTML/CSS</span>
           </div>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:.16em;color:#5f7d77;margin-bottom:8px;">MOBILE</div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:.16em;color:#5f7898;margin-bottom:8px;">MOBILE</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Swift</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Kotlin</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Flutter</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">C++</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Swift</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Kotlin</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Flutter</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">C++</span>
           </div>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:600;letter-spacing:.16em;color:#5f7d77;margin-bottom:8px;">INFRA</div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:.16em;color:#5f7898;margin-bottom:8px;">INFRA</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;">
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">AWS</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Docker</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Terraform</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Cloudflare</span>
-            <span style="padding:4px 10px;background:#f4f7f6;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Shell</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">AWS</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Docker</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Terraform</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Cloudflare</span>
+            <span style="padding:4px 10px;background:#f4f6f9;font-family:'Lato',sans-serif;font-size:12px;font-weight:500;color:#333;letter-spacing:.04em;">Shell</span>
           </div>
         </div>
       </div>
@@ -214,140 +214,72 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 <section id="features" style="background:#fff;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);scroll-margin-top:68px;">
   <div style="max-width:1100px;margin:0 auto;">
     <div data-reveal="" style="margin-bottom:clamp(48px,6vw,64px);">
-      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aa8a5;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1.1;letter-spacing:.06em;">FEATURES</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aaab8;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1.1;letter-spacing:.06em;">FEATURES</div>
       <div style="font-size:14px;color:#333;margin-top:6px;letter-spacing:.14em;">特徴</div>
-      <p data-reveal="" data-rd="60" style="margin:16px 0 0;font-size:clamp(14px,1.2vw,16px);color:#5a615f;">技術力・体制・実行力の3つで、お客様の「作りたい」を形にします。</p>
+      <p data-reveal="" data-rd="60" style="margin:16px 0 0;font-size:clamp(14px,1.2vw,16px);color:#5a5f6a;">技術力・体制・実行力の3つで、お客様の「作りたい」を形にします。</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(51,51,51,0.1);">
       <div data-reveal="" data-rd="0" style="display:grid;grid-template-columns:clamp(120px,20%,200px) 1fr;border-bottom:1px solid rgba(51,51,51,0.08);">
         <div style="padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,32px) clamp(24px,3vw,36px) 0;border-right:1px solid rgba(51,51,51,0.08);">
-          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4vw,52px);color:#dde8e5;line-height:1;">01</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#5f7d77;margin-top:8px;">上流からの対応力</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4vw,52px);color:#d8e0ea;line-height:1;">01</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#5f7898;margin-top:8px;">上流からの対応力</div>
         </div>
         <div style="padding:clamp(24px,3vw,36px) 0 clamp(24px,3vw,36px) clamp(24px,3vw,36px);">
           <div style="font-size:clamp(15px,1.3vw,18px);font-weight:700;color:#333;margin-bottom:12px;line-height:1.5;">上流工程からの対応力</div>
-          <p style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a615f;margin:0;">要件定義でスコープを明確化し、基本設計でドキュメント化して合意形成を行います。「何を作るか」から一緒に考えるため、認識のズレや手戻りを最小限に抑えます。</p>
+          <p style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a5f6a;margin:0;">要件定義でスコープを明確化し、基本設計でドキュメント化して合意形成を行います。「何を作るか」から一緒に考えるため、認識のズレや手戻りを最小限に抑えます。</p>
         </div>
       </div>
       <div data-reveal="" data-rd="80" style="display:grid;grid-template-columns:clamp(120px,20%,200px) 1fr;border-bottom:1px solid rgba(51,51,51,0.08);">
         <div style="padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,32px) clamp(24px,3vw,36px) 0;border-right:1px solid rgba(51,51,51,0.08);">
-          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4vw,52px);color:#dde8e5;line-height:1;">02</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#5f7d77;margin-top:8px;">ワンストップ</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4vw,52px);color:#d8e0ea;line-height:1;">02</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#5f7898;margin-top:8px;">ワンストップ</div>
         </div>
         <div style="padding:clamp(24px,3vw,36px) 0 clamp(24px,3vw,36px) clamp(24px,3vw,36px);">
           <div style="font-size:clamp(15px,1.3vw,18px);font-weight:700;color:#333;margin-bottom:12px;line-height:1.5;">開発とインフラをワンストップで</div>
-          <p style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a615f;margin:0;">アプリケーション開発だけでなく、それを支えるクラウドインフラの設計・構築・運用まで対応。窓口を分散させることなく、システム全体を一貫した品質で任せられます。</p>
+          <p style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a5f6a;margin:0;">アプリケーション開発だけでなく、それを支えるクラウドインフラの設計・構築・運用まで対応。窓口を分散させることなく、システム全体を一貫した品質で任せられます。</p>
         </div>
       </div>
       <div data-reveal="" data-rd="160" style="display:grid;grid-template-columns:clamp(120px,20%,200px) 1fr;border-bottom:1px solid rgba(51,51,51,0.08);">
         <div style="padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,32px) clamp(24px,3vw,36px) 0;border-right:1px solid rgba(51,51,51,0.08);">
-          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4vw,52px);color:#dde8e5;line-height:1;">03</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#5f7d77;margin-top:8px;">グループ力</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4vw,52px);color:#d8e0ea;line-height:1;">03</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#5f7898;margin-top:8px;">グループ力</div>
         </div>
         <div style="padding:clamp(24px,3vw,36px) 0 clamp(24px,3vw,36px) clamp(24px,3vw,36px);">
           <div style="font-size:clamp(15px,1.3vw,18px);font-weight:700;color:#333;margin-bottom:12px;line-height:1.5;">グループの総合力</div>
-          <p style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a615f;margin:0;">Wytelは、コンサルティングの知見、開発実行力、550名規模の人材リソースを持つグループの一員です。プロジェクトの規模や難易度に応じて、グループ横断で最適な体制を組成します。</p>
+          <p style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a5f6a;margin:0;">Wytelは、コンサルティングの知見、開発実行力、550名規模の人材リソースを持つグループの一員です。プロジェクトの規模や難易度に応じて、グループ横断で最適な体制を組成します。</p>
         </div>
       </div>
       <div data-reveal="" data-rd="240" style="display:grid;grid-template-columns:clamp(120px,20%,200px) 1fr;border-bottom:1px solid rgba(51,51,51,0.08);">
         <div style="padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,32px) clamp(24px,3vw,36px) 0;border-right:1px solid rgba(51,51,51,0.08);">
-          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4vw,52px);color:#dde8e5;line-height:1;">04</div>
-          <div style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#5f7d77;margin-top:8px;">現場の実践知</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,4vw,52px);color:#d8e0ea;line-height:1;">04</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.12em;color:#5f7898;margin-top:8px;">現場の実践知</div>
         </div>
         <div style="padding:clamp(24px,3vw,36px) 0 clamp(24px,3vw,36px) clamp(24px,3vw,36px);">
           <div style="font-size:clamp(15px,1.3vw,18px);font-weight:700;color:#333;margin-bottom:12px;line-height:1.5;">現場で鍛えた実践知（SES）</div>
-          <p style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a615f;margin:0;">多様な現場経験で培った実践知が、受託開発の品質を裏付けています。理論だけでなく「実際に動くもの」を作りきる力があります。</p>
+          <p style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a5f6a;margin:0;">多様な現場経験で培った実践知が、受託開発の品質を裏付けています。理論だけでなく「実際に動くもの」を作りきる力があります。</p>
         </div>
       </div>
     </div>
 
     <!-- グループ情報 -->
-    <div data-reveal="" data-rd="320" style="margin-top:clamp(40px,5vw,56px);background:#f4f7f6;padding:clamp(28px,3.5vw,44px);border-top:3px solid #b8d0cd;border-radius:18px;">
+    <div data-reveal="" data-rd="320" style="margin-top:clamp(40px,5vw,56px);background:#f4f6f9;padding:clamp(28px,3.5vw,44px);border-top:3px solid #b8c6d8;border-radius:18px;">
       <div style="font-size:13px;font-weight:600;letter-spacing:.14em;color:#333;margin-bottom:clamp(20px,2.5vw,28px);">グループの総合力</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(16px,2vw,24px);">
-        <div style="display:flex;flex-direction:column;gap:8px;padding:clamp(16px,2vw,22px);background:#fff;border-left:3px solid #b8d0cd;border-radius:18px;">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:clamp(16px,2vw,22px);background:#fff;border-left:3px solid #b8c6d8;border-radius:18px;">
           <div style="font-size:14px;font-weight:700;color:#333;">Wytel</div>
-          <p style="font-size:12px;line-height:1.8;color:#5a615f;margin:0;">戦略・PM・開発を統括する司令塔</p>
+          <p style="font-size:12px;line-height:1.8;color:#5a5f6a;margin:0;">戦略・PM・開発を統括する司令塔</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px;padding:clamp(16px,2vw,22px);background:#fff;border-left:3px solid #b8d0cd;border-radius:18px;">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:clamp(16px,2vw,22px);background:#fff;border-left:3px solid #b8c6d8;border-radius:18px;">
           <div style="font-size:14px;font-weight:700;color:#333;">アイシーソフト</div>
-          <p style="font-size:12px;line-height:1.8;color:#5a615f;margin:0;">上流〜下流、自社サービス開発（ISMS取得）</p>
+          <p style="font-size:12px;line-height:1.8;color:#5a5f6a;margin:0;">上流〜下流、自社サービス開発（ISMS取得）</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px;padding:clamp(16px,2vw,22px);background:#fff;border-left:3px solid #b8d0cd;border-radius:18px;">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:clamp(16px,2vw,22px);background:#fff;border-left:3px solid #b8c6d8;border-radius:18px;">
           <div style="font-size:14px;font-weight:700;color:#333;">BWコンサルティング</div>
-          <p style="font-size:12px;line-height:1.8;color:#5a615f;margin:0;">飲食・美容・不動産の実業知見、DXマーケティング支援</p>
+          <p style="font-size:12px;line-height:1.8;color:#5a5f6a;margin:0;">飲食・美容・不動産の実業知見、DXマーケティング支援</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px;padding:clamp(16px,2vw,22px);background:#fff;border-left:3px solid #b8d0cd;border-radius:18px;">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:clamp(16px,2vw,22px);background:#fff;border-left:3px solid #b8c6d8;border-radius:18px;">
           <div style="font-size:14px;font-weight:700;color:#333;">銀河ソフトウェア</div>
-          <p style="font-size:12px;line-height:1.8;color:#5a615f;margin:0;">創業36年の安定基盤、リソースパートナー</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FLOW -->
-<section id="flow" style="background:#f4f7f6;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);scroll-margin-top:68px;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div data-reveal="" style="margin-bottom:clamp(48px,6vw,64px);">
-      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aa8a5;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1.1;letter-spacing:.06em;">FLOW</div>
-      <div style="font-size:14px;color:#333;margin-top:6px;letter-spacing:.14em;">対応の流れ</div>
-      <p data-reveal="" data-rd="60" style="margin:16px 0 0;font-size:clamp(14px,1.2vw,16px);color:#5a615f;">5つのステップで、構想を確実にカタチへ。</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:0;">
-      <div data-reveal="" data-rd="0" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div>
-          <div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;">01</span></div>
-          <div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div>
-        </div>
-        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;">
-          <div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">要件定義</div>
-          <div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">お客様の課題やご要望をヒアリングし、「何を作るべきか」からスコープを明確化します。</div>
-        </div>
-      </div>
-      <div data-reveal="" data-rd="80" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div>
-          <div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;">02</span></div>
-          <div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div>
-        </div>
-        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;">
-          <div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">設計</div>
-          <div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">基本設計・詳細設計をドキュメント化し、認識をすり合わせながら合意形成を行います。</div>
-        </div>
-      </div>
-      <div data-reveal="" data-rd="160" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div>
-          <div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;">03</span></div>
-          <div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div>
-        </div>
-        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;">
-          <div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">開発</div>
-          <div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">明確化した要件に基づき、品質を担保しながら実装を進めます。</div>
-        </div>
-      </div>
-      <div data-reveal="" data-rd="240" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div>
-          <div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;">04</span></div>
-          <div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div>
-        </div>
-        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;">
-          <div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">テスト</div>
-          <div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">各種テストで品質を検証し、安心してご利用いただける状態に仕上げます。</div>
-        </div>
-      </div>
-      <div data-reveal="" data-rd="320" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div>
-          <div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;">05</span></div>
-          <div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div>
-        </div>
-        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;">
-          <div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">運用・保守</div>
-          <div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">リリース後も継続的に運用・保守を行い、システムの安定稼働を支えます。</div>
+          <p style="font-size:12px;line-height:1.8;color:#5a5f6a;margin:0;">創業36年の安定基盤、リソースパートナー</p>
         </div>
       </div>
     </div>
@@ -358,32 +290,32 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 <section id="works" style="background:#fff;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);scroll-margin-top:68px;">
   <div style="max-width:1100px;margin:0 auto;">
     <div data-reveal="" style="margin-bottom:clamp(48px,6vw,64px);">
-      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aa8a5;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1.1;letter-spacing:.06em;">WORKS</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aaab8;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1.1;letter-spacing:.06em;">WORKS</div>
       <div style="font-size:14px;color:#333;margin-top:6px;letter-spacing:.14em;">対応実績（業種）</div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(16px,2vw,24px);">
-      <div data-reveal="" data-rd="0" style="padding:clamp(24px,3vw,36px);background:#f4f7f6;border-top:3px solid #b8d0cd;border-radius:18px;display:flex;flex-direction:column;gap:12px;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#5f7d77;">建設・ゼネコン</div>
-        <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;margin:0;">大手建設会社様向けの環境管理・現場DX支援</p>
+      <div data-reveal="" data-rd="0" style="padding:clamp(24px,3vw,36px);background:#f4f6f9;border-top:3px solid #b8c6d8;border-radius:18px;display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#5f7898;">建設・ゼネコン</div>
+        <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a5f6a;margin:0;">大手建設会社様向けの環境管理・現場DX支援</p>
       </div>
-      <div data-reveal="" data-rd="80" style="padding:clamp(24px,3vw,36px);background:#f4f7f6;border-top:3px solid #b8d0cd;border-radius:18px;display:flex;flex-direction:column;gap:12px;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#5f7d77;">飲食・小売・EC</div>
-        <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;margin:0;">大手から個人店まで幅広いIT／DX導入支援</p>
+      <div data-reveal="" data-rd="80" style="padding:clamp(24px,3vw,36px);background:#f4f6f9;border-top:3px solid #b8c6d8;border-radius:18px;display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#5f7898;">飲食・小売・EC</div>
+        <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a5f6a;margin:0;">大手から個人店まで幅広いIT／DX導入支援</p>
       </div>
-      <div data-reveal="" data-rd="160" style="padding:clamp(24px,3vw,36px);background:#f4f7f6;border-top:3px solid #b8d0cd;border-radius:18px;display:flex;flex-direction:column;gap:12px;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#5f7d77;">製造・物流・医療</div>
-        <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;margin:0;">工場・病院等の勤怠管理システム導入</p>
+      <div data-reveal="" data-rd="160" style="padding:clamp(24px,3vw,36px);background:#f4f6f9;border-top:3px solid #b8c6d8;border-radius:18px;display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#5f7898;">製造・物流・医療</div>
+        <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a5f6a;margin:0;">工場・病院等の勤怠管理システム導入</p>
       </div>
-      <div data-reveal="" data-rd="240" style="padding:clamp(24px,3vw,36px);background:#f4f7f6;border-top:3px solid #b8d0cd;border-radius:18px;display:flex;flex-direction:column;gap:12px;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#5f7d77;">AI・LINE・エンタメ</div>
-        <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;margin:0;">社内GPT＋RAG、LINE CRM など</p>
+      <div data-reveal="" data-rd="240" style="padding:clamp(24px,3vw,36px);background:#f4f6f9;border-top:3px solid #b8c6d8;border-radius:18px;display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#5f7898;">AI・LINE・エンタメ</div>
+        <p style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a5f6a;margin:0;">社内GPT＋RAG、LINE CRM など</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section style="background:#b8d0cd;position:relative;overflow:hidden;padding:clamp(72px,10vw,110px) clamp(20px,4vw,40px);">
+<section style="background:#b8c6d8;position:relative;overflow:hidden;padding:clamp(72px,10vw,110px) clamp(20px,4vw,40px);">
   <div style="position:absolute;z-index:0;pointer-events:none;filter:blur(2px);top:-100px;right:-80px;width:320px;height:320px;background:#f4ede3;opacity:0.4;animation:wy-blobA 16s ease-in-out infinite,wy-drift 20s ease-in-out infinite;"></div>
   <div data-reveal="" style="max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:1;">
     <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3.2vw,42px);color:#333;line-height:1.4;margin-bottom:clamp(16px,2vw,24px);">システム化・DX化を検討している領域があれば、<br>まずはご相談ください。</div>
