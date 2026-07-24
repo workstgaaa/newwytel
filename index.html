@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>株式会社Wytel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Kaushan+Script&family=Caveat:wght@600;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;}
+@keyframes wy-marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@keyframes wy-kenburns{0%{transform:scale(1);}100%{transform:scale(1.1);}}
+@keyframes wy-blobA{0%,100%{border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;}50%{border-radius:58% 42% 37% 63% / 56% 59% 41% 44%;}}
+@keyframes wy-blobB{0%,100%{border-radius:63% 37% 51% 49% / 37% 51% 49% 63%;}50%{border-radius:37% 63% 49% 51% / 63% 49% 51% 37%;}}
+@keyframes wy-drift{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(18px,-22px) rotate(10deg);}}
+@keyframes wy-driftB{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(-22px,16px) rotate(-8deg);}}
+@keyframes wy-caret{0%,100%{opacity:1;}50%{opacity:0;}}
+@keyframes wy-enIn{0%{opacity:0;transform:translate(-50%,-50%) rotate(-9deg) scale(0.6) translateY(8px);}60%{transform:translate(-50%,-50%) rotate(-9deg) scale(1.28) translateY(-3px);}100%{opacity:1;transform:translate(-50%,-50%) rotate(-9deg) scale(1.18) translateY(0);}}
+
+/* scroll reveal */
+.wy-armed [data-reveal]{opacity:0;transform:translateY(34px);transition:opacity 1.05s cubic-bezier(.22,1,.36,1), transform 1.05s cubic-bezier(.22,1,.36,1);}
+.wy-armed [data-reveal].wy-in{opacity:1;transform:none;}
+[data-reveal].wy-force{opacity:1!important;transform:none!important;transition:none!important;}
+@media(prefers-reduced-motion:reduce){.wy-armed [data-reveal]{opacity:1;transform:none;transition:none;}}
+
+/* themes */
+:root{
+  --bg:#ffffff;--bgAlt:#f4f7f6;--cream:#f8f4ef;--ink:#333333;--sub:#5a615f;
+  --sage:#b8d0cd;--sageSolid:#b8d0cd;--accentText:#5f7d77;--white:#ffffff;
+  --blobSage:#cbe0db;--blobSand:#ecdcc7;--line:rgba(51,51,51,0.14);
+  --radius:0px;--btnRadius:0px;--enW:500;--partnerBg:#b8d0cd;
+  --cardBg:#f4f7f6;--cardBorder:1px solid rgba(51,51,51,0.08);
+  --enSize:clamp(46px,6.6vw,82px);
+}
+body[data-mode="soft"]{
+  --bg:#ffffff;--bgAlt:#f2f6f5;--cream:#faf6f1;--ink:#2f3b38;--sub:#586663;
+  --sage:#b8d0cd;--sageSolid:#b8d0cd;--accentText:#4f6f69;
+  --blobSage:#cfe3de;--blobSand:#eedfcb;--line:rgba(47,59,56,0.10);
+  --radius:18px;--btnRadius:999px;--partnerBg:#bdd6d2;
+  --cardBg:#f4f8f6;--cardBorder:1px solid rgba(47,59,56,0.05);
+}
+body[data-mode="soft"] .marquee-word{color:transparent;-webkit-text-stroke:1.5px #8aaba7;}
+body[data-mode="soft"] .en-label{color:var(--accentText);}
+body[data-mode="bold"]{
+  --bg:#ffffff;--bgAlt:#f1f5f4;--cream:#faf6f0;--ink:#222a28;--sub:#525c59;
+  --sage:#b8d0cd;--sageSolid:#b8d0cd;--accentText:#2f4b46;
+  --blobSage:#c8ddd8;--blobSand:#e9d9c3;--line:rgba(34,42,40,0.18);
+  --radius:0px;--btnRadius:0px;--partnerBg:#333333;
+  --cardBg:#f1f5f4;--cardBorder:1.5px solid #222a28;
+  --enSize:clamp(48px,7.4vw,100px);
+}
+
+/* layout */
+#root{background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+/* header */
+header{position:absolute;top:0;left:0;z-index:60;}
+header .inner{padding:22px clamp(20px,4vw,40px);}
+header a{display:flex;align-items:center;gap:12px;text-decoration:none;color:#1a1a1a;}
+header img{height:48px;width:auto;display:block;}
+
+/* sidebar nav */
+#side-nav{position:fixed;top:50%;right:clamp(14px,2.4vw,34px);transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(14px,1.8vw,24px);}
+#side-nav a{text-decoration:none;color:#1a1a1a;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;letter-spacing:.18em;line-height:1;transition:opacity .28s ease, transform .28s cubic-bezier(.22,1,.36,1);transform-origin:right center;}
+#side-nav a:hover{transform:scale(1.32);}
+
+/* section labels */
+.en-label{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--enSize);color:#ffffff;line-height:1.15;letter-spacing:0.06em;}
+.en-label-outline{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:var(--enSize);color:#9aa8a5;text-shadow:0 1px 3px rgba(0,0,0,0.15);line-height:1.15;letter-spacing:0.06em;}
+.ja-label{font-family:'Noto Sans JP',sans-serif;font-size:clamp(15px,1.4vw,20px);font-weight:400;color:var(--ink);margin-top:4px;}
+
+/* blob decorations */
+.blob{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;}
+
+/* buttons */
+.btn-dark{display:inline-flex;align-items:center;justify-content:center;padding:14px 34px;background:var(--ink);color:#fff;text-decoration:none;font-size:16px;font-weight:500;border-radius:var(--btnRadius);border:none;cursor:pointer;transition:transform .3s ease,opacity .3s ease;}
+.btn-dark:hover{transform:translateY(-2px);}
+
+/* ── HERO ─────────────────────────────── */
+#hero{position:relative;overflow:hidden;background:var(--bgAlt);}
+#hero-bg-wrap{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;top:-160px;left:-120px;width:420px;height:420px;background:var(--blobSand);opacity:0.5;animation:wy-blobA 14s ease-in-out infinite, wy-drift 19s ease-in-out infinite;}
+#hero-blob2{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;bottom:40px;left:-90px;width:240px;height:240px;background:var(--cream);opacity:0.55;animation:wy-blobB 12s ease-in-out infinite, wy-driftB 16s ease-in-out infinite;}
+#hero-content{max-width:1320px;margin:0 auto;padding:clamp(70px,11vw,150px) clamp(20px,4vw,40px) clamp(36px,5vw,64px);position:relative;z-index:2;}
+#hero-grid{position:relative;display:grid;align-items:center;}
+#hero-img-wrap{grid-area:1/1;justify-self:end;align-self:stretch;width:min(920px,76%);min-height:clamp(460px,66vh,800px);border-radius:16px;overflow:hidden;-webkit-mask-image:linear-gradient(100deg,transparent 6%,rgba(0,0,0,0.18) 30%,#000 60%);mask-image:linear-gradient(100deg,transparent 6%,rgba(0,0,0,0.18) 30%,#000 60%);}
+#hero-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;animation:wy-kenburns 16s ease-in-out infinite alternate;will-change:transform;}
+#hero-text{grid-area:1/1;position:relative;z-index:2;max-width:min(560px,100%);padding:clamp(24px,3vw,44px) 0;}
+#hero-h1{font-family:'Noto Sans JP',sans-serif;font-weight:500;font-size:clamp(33px,5.2vw,66px);line-height:1.38;letter-spacing:0.01em;margin:18px 0 0;color:var(--ink);white-space:nowrap;}
+#hero-typed{margin:40px 0 0;max-width:30em;font-size:clamp(20px,1.8vw,27px);line-height:1.9;color:var(--ink);}
+
+/* marquee */
+#marquee-wrap{position:relative;z-index:2;overflow:hidden;}
+#marquee-inner{display:flex;align-items:center;white-space:nowrap;animation:wy-marquee 24s linear infinite;padding:clamp(2px,0.4vw,6px) 0;width:max-content;}
+.marquee-word{display:inline-flex;align-items:center;padding-right:clamp(24px,3.4vw,56px);font-family:'Lato',sans-serif;font-weight:900;font-size:clamp(92px,16vw,220px);line-height:0.82;letter-spacing:.02em;color:transparent;-webkit-text-stroke:1px #ffffff;}
+
+/* ── SERVICE ─────────────────────────── */
+#service{background:var(--cream);position:relative;}
+
+/* scroll service */
+#svc-scroll{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;}
+#svc-scroll-blob{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;top:-120px;right:-100px;width:440px;height:440px;background:var(--blobSage);opacity:0.5;animation:wy-blobA 15s ease-in-out infinite, wy-drift 21s ease-in-out infinite;}
+#svc-inner{display:flex;align-items:flex-start;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,52px);gap:0;position:relative;z-index:1;height:100%;}
+#svc-sidebar{flex:0 0 clamp(160px,22%,280px);padding-right:clamp(18px,2.4vw,40px);padding-top:clamp(72px,10vw,130px);display:flex;flex-direction:column;}
+#svc-dots{margin-top:clamp(24px,3.6vw,46px);display:flex;flex-direction:column;gap:13px;}
+.svc-dot-btn{display:flex;align-items:center;gap:12px;background:none;border:none;cursor:pointer;padding:3px 0;}
+.svc-dot-line{height:2px;flex-shrink:0;border-radius:2px;transition:width .5s ease,background .5s ease;}
+.svc-dot-num{font-family:'Lato',sans-serif;font-size:12px;letter-spacing:.1em;transition:color .5s ease;}
+#svc-scroll-hint{margin-top:auto;padding-top:32px;font-family:'Lato',sans-serif;font-size:12px;letter-spacing:.1em;color:var(--sub);display:flex;align-items:center;gap:8px;}
+#svc-cards{flex:1;position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.svc-card{position:absolute;width:min(660px,94%);aspect-ratio:1.15;border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;display:flex;flex-direction:column;justify-content:center;padding:clamp(44px,6vw,76px);box-shadow:0 28px 64px -28px rgba(0,0,0,0.18);transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .8s cubic-bezier(.22,1,.36,1);}
+.svc-card-num{font-family:'Lato',sans-serif;font-size:clamp(11px,0.9vw,13px);letter-spacing:.2em;color:var(--accentText);}
+.svc-card-title{font-size:clamp(20px,2.2vw,34px);font-weight:700;margin:14px 0 0;letter-spacing:-0.02em;line-height:1.32;}
+.svc-card-body{margin:16px 0 0;font-size:clamp(13px,1vw,16px);line-height:1.95;color:var(--sub);}
+.svc-card-link{display:inline-flex;align-items:center;gap:10px;margin-top:24px;text-decoration:none;font-family:'Lato',sans-serif;font-size:14px;font-weight:600;color:var(--accentText);padding-bottom:3px;border-bottom:1px solid var(--accentText);transition:gap .3s ease;}
+.svc-card-link:hover{gap:16px;}
+
+/* fallback service list */
+#svc-fallback{overflow:hidden;position:relative;display:none;}
+#svc-fallback-blob{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;top:-120px;right:-140px;width:440px;height:440px;background:var(--blobSage);opacity:0.5;animation:wy-blobA 15s ease-in-out infinite,wy-drift 21s ease-in-out infinite;}
+#svc-fallback-inner{max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);position:relative;z-index:1;}
+.svc-row{text-decoration:none;color:inherit;display:grid;grid-template-columns:auto 1fr auto;gap:clamp(16px,2.4vw,38px);align-items:center;padding:clamp(22px,2.4vw,32px) 6px;border-bottom:1px solid var(--line);transition:padding-left .35s ease,background .35s ease;}
+.svc-row:hover{padding-left:18px;background:rgba(255,255,255,0.45);}
+.svc-row-num{font-family:'Lato',sans-serif;font-size:clamp(13px,1.2vw,15px);letter-spacing:.12em;color:var(--accentText);}
+.svc-row-title{font-size:clamp(18px,2vw,28px);font-weight:700;letter-spacing:-0.01em;line-height:1.45;}
+.svc-row-arr{font-family:'Lato',sans-serif;font-size:clamp(18px,1.8vw,22px);color:var(--accentText);}
+
+/* ── ABOUT ────────────────────────────── */
+#info{background:var(--bgAlt);position:relative;overflow:hidden;}
+#info-blob1{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;bottom:-150px;left:-120px;width:400px;height:400px;background:var(--blobSand);opacity:0.45;animation:wy-blobB 16s ease-in-out infinite,wy-driftB 22s ease-in-out infinite;}
+#info-inner{max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);position:relative;z-index:1;}
+#info-grid{margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:1fr clamp(280px,32%,420px);gap:clamp(40px,6vw,80px);align-items:start;}
+.info-label{font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--accentText);margin-bottom:10px;}
+.info-philosophy-text{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(22px,2.6vw,34px);line-height:1.5;letter-spacing:.04em;color:var(--ink);margin:0;}
+.info-divider{width:clamp(32px,4vw,48px);height:1px;background:var(--line);margin:clamp(28px,3.5vw,44px) 0;}
+.info-vision{font-size:clamp(14px,1.2vw,16px);line-height:2.1;color:var(--sub);margin:0;}
+.info-card-link{text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:14px;}
+.info-card-img{aspect-ratio:11/10;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);position:relative;transition:transform .45s cubic-bezier(.22,1,.36,1);}
+.info-card-img:hover{transform:translateY(-6px);}
+.info-card-img svg{width:100%;height:100%;display:block;}
+.info-card-badge{position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;}
+.info-card-badge span{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.08em;color:var(--ink);background:#fff;padding:6px 11px;}
+.info-card-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.info-card-footer span{font-size:clamp(15px,1.3vw,18px);font-weight:500;}
+.info-card-arr{font-family:'Lato',sans-serif;font-size:16px;color:var(--accentText);}
+
+/* ── PARTNER ──────────────────────────── */
+#partner{background:var(--partnerBg);position:relative;overflow:hidden;}
+#partner-blob1{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;top:-130px;right:-120px;width:460px;height:460px;background:var(--cream);opacity:0.4;animation:wy-blobA 17s ease-in-out infinite,wy-drift 23s ease-in-out infinite;}
+#partner-blob2{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;bottom:-110px;right:18%;width:200px;height:200px;background:var(--blobSand);opacity:0.5;animation:wy-blobB 13s ease-in-out infinite,wy-driftB 18s ease-in-out infinite;}
+#partner-inner{max-width:1320px;margin:0 auto;padding:clamp(80px,11vw,150px) clamp(20px,4vw,40px);position:relative;z-index:1;}
+#partner-body{max-width:48em;}
+.partner-lead{margin:clamp(24px,3vw,40px) 0 0;font-size:clamp(17px,1.6vw,23px);line-height:1.8;color:var(--ink);font-weight:500;}
+.partner-sub{margin:24px 0 0;font-size:clamp(15px,1.25vw,17px);line-height:2;color:var(--sub);}
+.partner-list{margin:16px 0 0;padding-left:1.4em;font-size:clamp(15px,1.25vw,17px);line-height:1.8;color:var(--sub);list-style:disc;}
+.partner-list li{margin-bottom:18px;}
+.partner-hi{background:linear-gradient(transparent 62%,rgba(232,160,48,0.22) 62%);padding-bottom:2px;}
+
+/* ── RECRUIT ──────────────────────────── */
+#recruit{background:var(--cream);position:relative;overflow:hidden;}
+#recruit-blob{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;top:-120px;right:-110px;width:360px;height:360px;background:var(--blobSage);opacity:0.5;animation:wy-blobB 15s ease-in-out infinite,wy-drift 20s ease-in-out infinite;}
+#recruit-inner{max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);position:relative;z-index:1;}
+#recruit-body{margin-top:clamp(36px,4vw,60px);display:flex;flex-direction:column;gap:clamp(24px,3vw,40px);max-width:760px;margin-left:auto;margin-right:auto;}
+.recruit-badge{display:flex;gap:12px;align-items:center;margin-bottom:12px;}
+.recruit-badge-tag{font-size:11px;letter-spacing:.12em;font-weight:600;color:var(--accentText);border:1px solid var(--accentText);padding:3px 10px;}
+.recruit-badge-type{font-size:13px;color:var(--sub);}
+.recruit-h4{margin:0 0 10px;font-size:clamp(17px,1.6vw,21px);font-weight:700;color:var(--ink);}
+.recruit-table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.9;color:var(--sub);}
+.recruit-table td{padding:4px 0;vertical-align:top;}
+.recruit-table td:first-child{width:8em;color:var(--ink);font-weight:500;}
+.recruit-divider{border:none;border-top:1px solid var(--line);margin:0 0 clamp(20px,2.5vw,32px);}
+
+/* ── CONTACT ──────────────────────────── */
+#contact{background:var(--bgAlt);position:relative;overflow:hidden;}
+#contact-blob1{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;top:-140px;left:-120px;width:420px;height:420px;background:var(--blobSand);opacity:0.42;animation:wy-blobA 16s ease-in-out infinite,wy-driftB 21s ease-in-out infinite;}
+#contact-blob2{position:absolute;z-index:0;pointer-events:none;filter:blur(2px);will-change:border-radius,transform;bottom:-120px;right:-100px;width:300px;height:300px;background:var(--blobSage);opacity:0.5;animation:wy-blobB 14s ease-in-out infinite,wy-drift 19s ease-in-out infinite;}
+#contact-inner{max-width:760px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(20px,4vw,40px);position:relative;z-index:1;}
+#contact-head{text-align:center;}
+#contact-form-wrap{margin-top:clamp(32px,4vw,52px);}
+#contact-success{display:none;background:var(--cardBg);border:1px solid var(--line);padding:56px 32px;text-align:center;}
+#contact-success h3{font-size:23px;font-weight:700;margin:0;}
+#contact-success p{margin:14px 0 0;font-size:15px;color:var(--sub);line-height:1.85;}
+form{display:flex;flex-direction:column;gap:20px;}
+.field{display:flex;flex-direction:column;gap:7px;}
+.field label{font-size:15px;}
+.field label .req{color:#c0392b;margin-left:4px;}
+.field input,.field textarea,.field select{width:100%;padding:13px 15px;border:1px solid rgba(51,51,51,0.25);background:#ffffff;font-family:'Noto Sans JP',sans-serif;font-size:15px;color:#333;outline:none;border-radius:var(--radius);transition:border-color .2s ease;}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--sageSolid);}
+.field textarea{resize:vertical;font-family:'Noto Sans JP',sans-serif;}
+.privacy-row{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--sub);}
+.privacy-row input{width:18px;height:18px;accent-color:var(--sageSolid);cursor:pointer;flex-shrink:0;}
+.privacy-row a{color:var(--accentText);text-decoration:underline;}
+#submit-btn{width:100%;padding:17px;background:var(--ink);color:#fff;border:none;font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:500;letter-spacing:.06em;border-radius:var(--btnRadius);cursor:pointer;transition:opacity .25s;}
+#submit-btn:hover{opacity:.85;}
+#submit-btn:disabled{opacity:.35;cursor:not-allowed;}
+
+/* ── FOOTER ──────────────────────────── */
+footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',sans-serif;}
+#footer-inner{max-width:1320px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px) clamp(32px,4vw,48px);display:grid;grid-template-columns:1fr auto auto auto;gap:clamp(32px,5vw,64px);align-items:start;}
+@media(max-width:680px){#footer-inner{grid-template-columns:1fr 1fr;}}
+.footer-logo{height:36px;width:auto;max-width:120px;display:block;opacity:.85;object-fit:contain;}
+.footer-addr{margin:0;font-size:13px;line-height:2;color:rgba(255,255,255,0.5);}
+.footer-col-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:12px;letter-spacing:.2em;color:rgba(255,255,255,0.4);margin-bottom:4px;display:block;}
+.footer-col{display:flex;flex-direction:column;gap:10px;}
+.footer-col a{text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;transition:color .2s;}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:clamp(16px,2.5vw,24px) clamp(20px,4vw,40px);text-align:center;}
+.footer-copy{font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,0.35);}
+
+/* ── BACK TO TOP ──────────────────────── */
+#back-top{position:fixed;bottom:clamp(24px,4vw,40px);right:clamp(24px,4vw,40px);z-index:100;width:100px;height:100px;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;padding:0;opacity:0;transition:opacity .3s,transform .3s;transform:translateY(12px);}
+#back-top.visible{opacity:1;transform:translateY(0);}
+#back-top svg.blob-shape{position:absolute;top:0;left:0;}
+#back-top .arrow,.back-top-label{position:relative;z-index:1;}
+.back-top-label{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;letter-spacing:.14em;color:#ffffff;line-height:1;}
+
+/* ── THEME SWITCHER ───────────────────── */
+#theme-pill{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:90;display:flex;align-items:center;gap:7px;background:rgba(51,51,51,0.94);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-radius:999px;padding:7px 9px 7px 16px;box-shadow:0 18px 44px -18px rgba(0,0,0,.55);}
+#theme-pill .pill-label{font-family:'Lato',sans-serif;font-size:10px;letter-spacing:.18em;color:#b8d0cd;}
+.pill-btn{border:none;display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:999px;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .25s ease;}
+.pill-btn.active{background:#ffffff;color:#333;}
+.pill-btn.inactive{background:transparent;color:#cfe0db;}
+
+/* ── PRIVACY MODAL ────────────────────── */
+#privacy-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;padding:24px;}
+#privacy-modal.open{display:flex;}
+#privacy-box{background:#fff;border-radius:8px;max-width:680px;width:100%;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,0.2);}
+#privacy-header{display:flex;align-items:center;justify-content:space-between;padding:24px 32px;border-bottom:1px solid rgba(0,0,0,0.1);}
+#privacy-header h2{margin:0;font-size:18px;font-weight:700;letter-spacing:.04em;}
+#privacy-close{background:none;border:none;cursor:pointer;font-size:22px;color:#666;line-height:1;padding:4px;}
+#privacy-body{overflow-y:auto;padding:28px 32px;font-size:14px;line-height:2;color:#444;}
+#privacy-body h3{font-size:14px;font-weight:700;margin:28px 0 10px;color:#333;}
+#privacy-body p,#privacy-body ul{margin:0 0 14px;}
+#privacy-body ul{padding-left:1.4em;}
+#privacy-body table{width:100%;border-collapse:collapse;margin:0 0 16px;font-size:13px;}
+#privacy-body table th,#privacy-body table td{border:1px solid #ddd;padding:7px 10px;vertical-align:top;text-align:left;}
+#privacy-body table th{background:#f4f7f6;font-weight:600;}
+#privacy-body table td:first-child{white-space:nowrap;font-weight:500;width:40%;}
+</style>
+</head>
+<body data-mode="soft">
+<div id="root">
+
+  <!-- HEADER -->
+  <header>
+    <div class="inner">
+      <a href="#hero">
+        <img src="Wロゴ三角.png" alt="Wytel">
+      </a>
+    </div>
+  </header>
+
+  <!-- VERTICAL NAV -->
+  <nav id="side-nav">
+    <a href="#hero">HOME</a>
+    <a href="#service">SERVICE</a>
+    <a href="#info">ABOUT</a>
+    <a href="#partner">PARTNER</a>
+    <a href="#recruit">RECRUIT</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+
+  <main>
+
+    <!-- ── HERO ─────────────────────────── -->
+    <section id="hero">
+      <div id="hero-bg-wrap"></div>
+      <div id="hero-blob2"></div>
+      <div id="hero-content">
+        <div id="hero-grid">
+          <div data-reveal data-rd="0" id="hero-img-wrap">
+            <img src="https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzQ2fDB8MXxzZWFyY2h8Nnx8JUU3JUE5JUJBfGVufDB8fHx8MTc1MDgxMzM1Nnww&ixlib=rb-4.1.0&q=80&w=1080" alt="雲海と空">
+          </div>
+          <div id="hero-text">
+            <h1 data-reveal data-rd="180" id="hero-h1">繋がりから革新を<br>革新から創造を</h1>
+            <p id="hero-typed"></p>
+          </div>
+        </div>
+      </div>
+      <div id="marquee-wrap">
+        <div id="marquee-inner">
+          <span class="marquee-word">WYTEL</span>
+          <span class="marquee-word">WYTEL</span>
+          <span class="marquee-word">WYTEL</span>
+          <span class="marquee-word">WYTEL</span>
+          <span class="marquee-word">WYTEL</span>
+          <span class="marquee-word">WYTEL</span>
+          <span class="marquee-word">WYTEL</span>
+          <span class="marquee-word">WYTEL</span>
+          <span class="marquee-word">WYTEL</span>
+          <span class="marquee-word">WYTEL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICE ───────────────────────── -->
+    <section id="service">
+      <!-- scroll mode (desktop) -->
+      <div id="svc-scroll">
+        <div id="svc-scroll-blob"></div>
+        <div id="svc-inner">
+          <div id="svc-sidebar">
+            <div class="en-label">SERVICE</div>
+            <div class="ja-label">事業内容</div>
+            <div id="svc-dots"></div>
+            <div id="svc-scroll-hint"><span>scroll ↓</span></div>
+          </div>
+          <div id="svc-cards"></div>
+        </div>
+      </div>
+      <!-- fallback list (mobile / no-scroll) -->
+      <div id="svc-fallback">
+        <div id="svc-fallback-blob"></div>
+        <div id="svc-fallback-inner">
+          <div data-reveal>
+            <div class="en-label-outline">SERVICE</div>
+            <div class="ja-label">事業内容</div>
+          </div>
+          <div style="margin-top:clamp(36px,4vw,60px);border-top:1px solid var(--line);" id="svc-list"></div>
+          <div data-reveal style="margin-top:clamp(32px,4vw,52px);">
+            <a href="#contact" class="btn-dark">サービスの詳細を見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ─────────────────────────── -->
+    <section id="info">
+      <div id="info-blob1"></div>
+      <div id="info-inner">
+        <div data-reveal>
+          <div class="en-label-outline">ABOUT</div>
+          <div class="ja-label">企業情報</div>
+        </div>
+        <div id="info-grid">
+          <div data-reveal>
+            <div style="display:flex;flex-direction:column;gap:clamp(28px,3.5vw,44px);">
+              <div>
+                <div class="info-label">企業理念</div>
+                <p class="info-philosophy-text">繋がりから革新を、<br>革新から創造を</p>
+              </div>
+              <div class="info-divider"></div>
+              <div>
+                <div class="info-label">ビジョン</div>
+                <p class="info-vision">人と人、企業と企業の繋がりを起点に、新たな革新を生み出し、社会に貢献する創造的な企業であり続けます。そのために、変化を恐れず挑戦し続けるメンバーとともに、持続的な成長と社会的価値の創出を追求してまいります。</p>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:clamp(20px,2.5vw,32px);">
+            <a href="企業情報.dc.html#overview" data-reveal data-rd="80" class="info-card-link">
+              <div class="info-card-img">
+                <svg viewBox="0 0 400 360" preserveAspectRatio="xMidYMid slice">
+                  <defs><linearGradient id="wyOvw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4ece3"/><stop offset="1" stop-color="#e7d6c3"/></linearGradient></defs>
+                  <rect width="400" height="360" fill="url(#wyOvw)"/>
+                  <circle cx="332" cy="74" r="28" fill="#e6d6c1"/>
+                  <rect x="0" y="330" width="400" height="30" fill="#c9b193"/>
+                  <rect x="34" y="206" width="72" height="124" fill="#dccbb4"/>
+                  <g fill="#f4ece3"><rect x="46" y="220" width="13" height="15"/><rect x="65" y="220" width="13" height="15"/><rect x="84" y="220" width="13" height="15"/><rect x="46" y="246" width="13" height="15"/><rect x="65" y="246" width="13" height="15"/><rect x="84" y="246" width="13" height="15"/><rect x="46" y="272" width="13" height="15"/><rect x="65" y="272" width="13" height="15"/><rect x="84" y="272" width="13" height="15"/><rect x="46" y="298" width="13" height="15"/><rect x="65" y="298" width="13" height="15"/><rect x="84" y="298" width="13" height="15"/></g>
+                  <rect x="146" y="96" width="40" height="22" fill="#e6d6c1"/>
+                  <rect x="124" y="118" width="84" height="212" fill="#e6d6c1"/>
+                  <g fill="#c9b193" opacity="0.85"><rect x="136" y="132" width="14" height="16"/><rect x="159" y="132" width="14" height="16"/><rect x="182" y="132" width="14" height="16"/><rect x="136" y="160" width="14" height="16"/><rect x="159" y="160" width="14" height="16"/><rect x="182" y="160" width="14" height="16"/><rect x="136" y="188" width="14" height="16"/><rect x="159" y="188" width="14" height="16"/><rect x="182" y="188" width="14" height="16"/><rect x="136" y="216" width="14" height="16"/><rect x="159" y="216" width="14" height="16"/><rect x="182" y="216" width="14" height="16"/><rect x="136" y="244" width="14" height="16"/><rect x="159" y="244" width="14" height="16"/><rect x="182" y="244" width="14" height="16"/><rect x="136" y="272" width="14" height="16"/><rect x="159" y="272" width="14" height="16"/><rect x="182" y="272" width="14" height="16"/></g>
+                  <rect x="222" y="244" width="40" height="86" fill="#c9b193"/>
+                  <rect x="276" y="166" width="84" height="164" fill="#ffffff"/>
+                  <g fill="#e6d6c1"><rect x="288" y="182" width="14" height="16"/><rect x="311" y="182" width="14" height="16"/><rect x="334" y="182" width="14" height="16"/><rect x="288" y="210" width="14" height="16"/><rect x="311" y="210" width="14" height="16"/><rect x="334" y="210" width="14" height="16"/><rect x="288" y="238" width="14" height="16"/><rect x="311" y="238" width="14" height="16"/><rect x="334" y="238" width="14" height="16"/><rect x="288" y="266" width="14" height="16"/><rect x="311" y="266" width="14" height="16"/><rect x="334" y="266" width="14" height="16"/><rect x="288" y="294" width="14" height="16"/><rect x="311" y="294" width="14" height="16"/><rect x="334" y="294" width="14" height="16"/></g>
+                </svg>
+                <div class="info-card-badge"><span>OVERVIEW</span></div>
+              </div>
+              <div class="info-card-footer">
+                <span>会社概要</span>
+                <span class="info-card-arr">→</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PARTNER ───────────────────────── -->
+    <section id="partner">
+      <div id="partner-blob1"></div>
+      <div id="partner-blob2"></div>
+      <div id="partner-inner">
+        <div id="partner-body">
+          <div data-reveal>
+            <div class="en-label">PARTNER</div>
+            <div class="ja-label">パートナー企業様募集</div>
+            <p class="partner-lead">弊社は、共に成長・発展を目指せるパートナー企業様を積極的に募集しております。</p>
+          </div>
+          <div data-reveal data-rd="80">
+            <p class="partner-sub">システム開発・システム構築の分野において、以下に該当する企業様からのご連絡をお待ちしております。</p>
+            <ul class="partner-list">
+              <li><span class="partner-hi">受託案件・常駐案件をご対応いただける技術者をご紹介いただける企業様</span></li>
+              <li><span class="partner-hi">弊社技術者をご活用いただける案件をお持ちの企業様</span></li>
+            </ul>
+          </div>
+          <div data-reveal data-rd="160">
+            <p class="partner-sub">人材・案件情報の相互共有を通じて、長期的な信頼関係を築いてまいりたいと考えております。</p>
+            <p class="partner-sub">異なる専門分野や特有の技術を持つ企業同士が、互いの強みを活かして協力し合うことは、変化の激しい現代のビジネス環境においてこれまで以上に重要な意味を持つと確信しております。</p>
+            <p class="partner-sub">弊社の事業内容にご興味をお持ちいただけましたら、ぜひお問い合わせフォームよりお気軽にご連絡ください。皆様との新たなご縁を心よりお待ちしております。</p>
+          </div>
+          <div data-reveal data-rd="240">
+            <a href="#contact" class="btn-dark" style="margin-top:36px;">パートナーのご相談</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RECRUIT ───────────────────────── -->
+    <section id="recruit">
+      <div id="recruit-blob"></div>
+      <div id="recruit-inner">
+        <div data-reveal>
+          <div class="en-label-outline">RECRUIT</div>
+          <div class="ja-label">求人情報</div>
+        </div>
+        <div id="recruit-body">
+          <div data-reveal data-rd="100" style="display:flex;flex-direction:column;gap:clamp(20px,2.5vw,32px);">
+            <div style="border-bottom:1px solid var(--line);padding-bottom:clamp(20px,2.5vw,32px);">
+              <div class="recruit-badge">
+                <span class="recruit-badge-tag">FULL-TIME</span>
+                <span class="recruit-badge-type">正社員</span>
+              </div>
+              <h4 class="recruit-h4">システムエンジニア / プログラマー</h4>
+              <table class="recruit-table">
+                <tr><td>雇用形態</td><td>正社員</td></tr>
+                <tr><td>業務内容</td><td>システムエンジニア／プログラマー<br><span style="font-size:12px;color:var(--sub);">（変更の範囲）営業・マーケター</span></td></tr>
+                <tr><td>契約期間</td><td>無期雇用</td></tr>
+                <tr><td>試用期間</td><td>あり（3ヶ月）</td></tr>
+                <tr><td>給与</td><td>月給 210,000円〜　賞与あり（年2回）　昇給あり（年1回）</td></tr>
+                <tr><td>勤務地</td><td>東京都、神奈川県、埼玉県、千葉県（客先常駐含む）<br><span style="font-size:12px;color:var(--sub);">（変更の範囲）本社および客先</span></td></tr>
+                <tr><td>勤務時間</td><td>9:00〜18:00、休憩12:00〜13:00（実働8時間）</td></tr>
+                <tr><td>時間外労働</td><td>あり（月平均10時間）</td></tr>
+                <tr><td>休日</td><td>週休2日制（土・日・祝日）、夏季休暇・年末年始休暇</td></tr>
+                <tr><td>福利厚生</td><td>雇用保険、労災保険、厚生年金、健康保険　資格取得支援</td></tr>
+                <tr><td>受動喫煙<br>防止措置</td><td>屋内禁煙（ビル内に喫煙所あり）</td></tr>
+                <tr><td>募集者</td><td>株式会社Wytel</td></tr>
+              </table>
+            </div>
+            <a href="#contact" class="btn-dark" style="align-self:flex-start;">エントリー・お問い合わせ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ───────────────────────── -->
+    <section id="contact">
+      <div id="contact-blob1"></div>
+      <div id="contact-blob2"></div>
+      <div id="contact-inner">
+        <div id="contact-head" data-reveal>
+          <div class="en-label-outline">CONTACT</div>
+          <div class="ja-label">お問い合わせ</div>
+        </div>
+        <div id="contact-form-wrap" data-reveal data-rd="80">
+          <div id="contact-success">
+            <h3>送信しました。</h3>
+            <p>お問い合わせありがとうございます。<br>担当者より折り返しご連絡いたします。</p>
+          </div>
+          <form id="contact-form" novalidate>
+            <div class="field">
+              <label>会社名</label>
+              <input type="text">
+            </div>
+            <div class="field">
+              <label>お名前<span class="req">*</span></label>
+              <input type="text" required>
+            </div>
+            <div class="field">
+              <label>メールアドレス<span class="req">*</span></label>
+              <input type="email" required>
+            </div>
+            <div class="field">
+              <label>電話番号</label>
+              <input type="tel">
+            </div>
+            <div class="field">
+              <label>お問い合わせ種類<span class="req">*</span></label>
+              <select required>
+                <option value="">選択してください</option>
+                <option value="inquiry">お問い合わせ</option>
+                <option value="partner">パートナー募集</option>
+                <option value="recruit">採用について</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>お問い合わせ内容<span class="req">*</span></label>
+              <textarea rows="6" required></textarea>
+            </div>
+            <label class="privacy-row">
+              <input type="checkbox" required id="privacy-chk">
+              <span><a href="privacy-policy.html" target="_blank">プライバシーポリシー</a>に同意する</span>
+            </label>
+            <div>
+              <button type="submit" id="submit-btn" disabled>送信する</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────── -->
+  <footer>
+    <div id="footer-inner">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <img class="footer-logo" src="Wロゴ三角.png" alt="Wytel">
+        <p class="footer-addr">〒170-0013<br>東京都豊島区東池袋1-34-5<br>いちご東池袋ビル203</p>
+        <p class="footer-addr">TEL: 03-5734-1982</p>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">MENU</span>
+        <a href="#hero">HOME</a>
+        <a href="privacy-policy.html">プライバシーポリシー</a>
+        <a href="security-policy.html">情報セキュリティ基本方針</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">ABOUT</span>
+        <a href="about.html#overview">会社概要</a>
+        <a href="about.html#history">沿革</a>
+        <a href="about.html#access">アクセス</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-col-title">SERVICE</span>
+        <a href="#service">サービス概要</a>
+        <a href="#service">対応領域</a>
+        <a href="#service">特徴</a>
+        <a href="#service">対応実績</a>
+        <a href="#service">対応の流れ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Wytel Inc. All Rights Reserved.</span>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="back-top" aria-label="トップへ戻る">
+    <svg class="blob-shape" viewBox="0 0 80 80" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40,6 C52,4 68,10 74,22 C80,34 78,52 70,62 C62,72 46,78 34,74 C22,70 8,60 6,46 C4,32 10,14 22,8 C28,5 34,7 40,6 Z" fill="#b8d0cd"/>
+    </svg>
+    <svg class="arrow" width="18" height="18" viewBox="0 0 14 14" fill="none">
+      <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="back-top-label">TOP</span>
+  </button>
+
+  <!-- THEME PILL -->
+  <div id="theme-pill">
+    <span class="pill-label">STYLE</span>
+    <button class="pill-btn inactive" data-mode="serene">Serene <span style="opacity:.55;font-size:11px;">静</span></button>
+    <button class="pill-btn active" data-mode="soft">Soft <span style="opacity:.55;font-size:11px;">和</span></button>
+    <button class="pill-btn inactive" data-mode="bold">Bold <span style="opacity:.55;font-size:11px;">構</span></button>
+  </div>
+
+  <!-- privacy modal removed — see privacy-policy.html -->
+  <div id="privacy-modal" style="display:none!important">
+    <div id="privacy-box">
+      <div id="privacy-header">
+        <h2>プライバシーポリシー</h2>
+        <button id="privacy-close">×</button>
+      </div>
+      <div id="privacy-body">
+        <h3>■個人情報保護方針</h3>
+        <p>株式会社Wytelは、システム開発事業を実施する上で、お客様の個人情報がプライバシーを構成する重要な情報であることを深く認識し、業務において個人情報を取り扱う場合には、個人情報に関する法令及び個人情報保護のために定めた社内規定を定め、また、組織体制を整備し、個人情報の適切な保護に努めることにより、お客様を尊重し、当社に対する期待と信頼に応えていきます。</p>
+        <p><strong>(1) 個人情報の取得、利用、提供</strong><br>当社は、事業活動の範囲内で個人情報の利用目的を特定し、その目的達成のために必要な限度で公正かつ適正に個人情報の取得、利用及び提供を行います。また、取得した個人情報の目的外利用をしないよう処置を講じます。</p>
+        <p><strong>(2) 法令・規範の遵守</strong><br>当社は、個人情報に関する法令、国が定める指針、その他の規範及び社会秩序を遵守し、個人情報の適切な保護に努めます。</p>
+        <p><strong>(3) 個人情報の適切な管理</strong><br>当社は、私たちが取り扱う個人情報について、不正アクセス、紛失、破壊、改ざん、漏えい、滅失又は毀損などの危険を十分に認識し、合理的な安全対策を実施するとともに、問題が発生した場合は適切な是正措置を講じます。</p>
+        <p><strong>(4) 問い合わせへの対応</strong><br>当社は、私たちが取り扱う個人情報について、本人から開示、訂正、利用停止及び苦情相談等のお問い合わせがあった場合は適正に対応します。</p>
+        <p><strong>(5) 継続的改善</strong><br>当社は、個人情報保護に関する管理規定及び管理体制を整備し、全社員で徹底して運用するとともに定期的な見直しを行い、個人情報保護マネジメントシステムの継続的な改善に努めます。</p>
+
+        <h3>■当社が取扱う個人情報について</h3>
+        <p>当社では「個人情報保護方針」に基づき個人情報の適切な保護に取り組んでいます。当社が事業の用に供するために取得し、または保有する個人情報について、以下の通りお知らせいたします。</p>
+        <p><strong>(1) 個人情報の取扱事業者の名称及び住所並びに法人にあたってはその代表者の氏名</strong></p>
+        <table>
+          <tr><td>事業者名</td><td>株式会社Wytel</td></tr>
+          <tr><td>代表取締役</td><td>青木 涼太</td></tr>
+          <tr><td>住所</td><td>東京都豊島区東池袋1-34-5 いちご東池袋ビル 203</td></tr>
+        </table>
+        <p><strong>(2) 個人情報保護管理者(若しくはその代理人)の氏名又は職名、所属及び連絡先</strong></p>
+        <table>
+          <tr><td>個人情報保護管理者</td><td>今野 拓也</td></tr>
+          <tr><td>電子メール</td><td>t-konno@wytel.jp</td></tr>
+        </table>
+        <p><strong>(3) 個人情報の利用目的</strong><br>当社が事業活動において取扱う個人情報の利用目的は、次の通りといたします。</p>
+        <p>① 保有個人データ</p>
+        <table>
+          <tr><th>情報の種類</th><th>利用目的</th></tr>
+          <tr><td>取引先情報</td><td>業務管理、各種連絡、請求、支払い管理のため</td></tr>
+          <tr><td>従業者情報</td><td>従業者管理に係わる業務に利用するため(業務・労務・人事管理業務、給与関連業務、福利厚生業務など)</td></tr>
+          <tr><td>採用応募者情報</td><td>採用に係わる業務に利用するため(採用に関する情報提供、採用可否判断、採用業務に関する連絡など)</td></tr>
+          <tr><td>退職者情報</td><td>退職者との連絡、退職者からのお問合せへの対応に利用するため</td></tr>
+          <tr><td>お問合せ者情報</td><td>お問合せに回答するため</td></tr>
+          <tr><td>本人および代理人の情報(開示等請求時)</td><td>開示等の求めに回答するため</td></tr>
+        </table>
+        <p>その他、個別に書面で明示したとおりの利用目的とします。</p>
+        <p>② それ以外取得個人情報</p>
+        <table>
+          <tr><th>情報の種類</th><th>利用目的</th></tr>
+          <tr><td>受託した業務により取得した個人情報</td><td>契約及びそれに伴う連絡、受託業務の遂行、アフターケアなどに利用するため</td></tr>
+          <tr><td>求人サイトから取得した情報</td><td>求人者に対する採用の可否を判断・通知するため</td></tr>
+        </table>
+        <p><strong>(4) 個人情報に関するお問合せ窓口</strong><br>保有個人データに関わるものを含め、個人情報の取扱についての苦情・相談、問合せは、下記の【問合せ窓口】までお申し出ください。</p>
+        <p><strong>(5) 所属する認定個人情報保護団体の名称および苦情の解決の申し出先</strong><br>なし</p>
+        <p><strong>(6) 開示等の手続について</strong><br>当社では、保有個人データに関して、ご本人の開示等(利用目的の通知、開示、内容の訂正、追加又は削除、利用の停止、消去、第三者への提供の停止および第三者提供記録の開示)の請求に迅速に対応いたします。ご希望される場合には、お申し出いただいた方がご本人或いはその代理人であることを確認した上で、合理的な期間及び範囲で対応いたします。</p>
+        <p><strong>(7) 開示等の受付方法・窓口</strong><br>保有個人データに関する開示等のお申し出は、下記の受付窓口までご連絡ください。ご連絡いただきましたら、当社所定の「保有個人データ開示等請求書」を郵送または、FAX、メール等でお送り致します。内容ご記入の上必要書類を同封し、郵送またはメール等にてお申し込み下さい。(送付料は請求者のご負担となります。)<br><br>ご本人(または代理人)であることを確認した上で、ご希望の開示方法により回答いたします。</p>
+        <p><strong>(8) 個人情報の安全管理のために講じた措置について</strong><br>当社では、個人情報を厳正に取り扱うため、JIS Q 15001に準拠した個人情報保護方針を基に、個人情報に関する規程等を策定し、個人情報保護マネジメントシステムを運用しています。個人情報の適正な取扱いの確保のため、組織的・人的・物理的・技術的の4つの観点より安全管理措置を講じています。</p>
+        <p><u>組織的対策</u></p>
+        <ul>
+          <li>従業員を監督し、個人情報漏えい等の緊急事態発生時の責任者への報告連絡体制を整備しています。</li>
+          <li>個人情報の取り扱い状況について定期的に社内監査にて確認しています。</li>
+          <li>利用目的に照らして不要となった個人情報については、速やかに且つ適正に削除・廃棄いたします。</li>
+        </ul>
+        <p><u>人的対策</u></p>
+        <ul>
+          <li>個人情報を含む機密保持契約書類を取得しています。</li>
+        </ul>
+        <p><u>物理的対策</u></p>
+        <ul>
+          <li>入退室管理を実施し、当社で許可した場所以外での取り扱いを禁止するとともに、権限を有しない者による個人情報の閲覧を防止する措置を実施しています。</li>
+          <li>個人情報を取り扱う機器、電子媒体及び書類等は事業所内の移動を含め、社外で持ち運ぶ場合、盗難・紛失に注意するとともに容易に個人情報が判明しないよう措置を講じています。</li>
+        </ul>
+        <p><u>技術的対策</u></p>
+        <ul>
+          <li>アクセス権を持つIDは個人情報保護管理者が発行・更新・廃棄の管理を行い、情報を使用しなくなったユーザのアクセス権は直ちに抹消します。</li>
+          <li>具体的な安全管理措置については下記【問合せ窓口】よりお問い合わせください。</li>
+        </ul>
+
+        <h3>■お問い合わせにおける個人情報の取扱いについて</h3>
+        <p><strong>(1) 組織の名称又は氏名</strong><br>株式会社Wytel</p>
+        <p><strong>(2) 個人情報保護管理者(若しくはその代理人)の氏名又は職名、所属及び連絡先</strong></p>
+        <table>
+          <tr><td>個人情報保護管理者</td><td>今野 拓也</td></tr>
+          <tr><td>所属</td><td>ソリューション事業部</td></tr>
+          <tr><td>連絡先</td><td>t-konno@wytel.jp</td></tr>
+        </table>
+        <p><strong>(3) 個人情報の利用目的</strong><br>お問い合わせいただいた内容の回答における個人情報の取扱いについて、お問い合わせいただいた内容に回答するため。</p>
+        <p><strong>(4) 個人情報の第三者提供について</strong><br>取得した個人情報は、法令等による場合を除いて第三者に提供しません。</p>
+        <p><strong>(5) 個人情報の取扱いの委託について</strong><br>取得した個人情報の取扱いの全部又は、一部を委託することがあります。その場合には、当社において最善の考慮を行います。</p>
+        <p><strong>(6) 個人情報を与えなかった場合に生じる結果</strong><br>個人情報を与えることは任意です。個人情報に関する情報の一部をご提供いただけない場合は、お問い合わせ内容に回答できない可能性があります。</p>
+        <p><strong>(7) 保有個人データの開示等および問い合わせ窓口について</strong><br>ご本人からの求めにより、当社が保有する保有個人データに関する開示、利用目的の通知、内容の訂正・追加または削除、利用停止、消去、第三者提供の停止および第三者提供記録の開示(以下、開示等という)に応じます。<br><br>開示等に応ずる窓口は、下記「当社の個人情報の取扱いに関する苦情、相談等の問合せ先」を参照してください。</p>
+        <p><strong>(8) 本人が容易に認識できない方法による個人情報の取得</strong><br>当ウェブサイトでは、お客様により良いサービスを提供するため、クッキー(Cookie)やWebビーコン等を使用し、利用状況等の情報を収集する場合があります。<br><br>これらの技術により取得された情報には、IPアドレス、閲覧したページ、クリック履歴等が含まれますが、これらの情報単体では特定の個人を識別するものではありません。<br><br>ただし、これらの情報とお客様ご本人からご提供いただいた情報を組み合わせて利用する場合、当社はそれらを個人情報として適切に管理・保護いたします。<br><br>クッキーの利用目的は以下の通りです：</p>
+        <ul>
+          <li>ウェブサイトの利用状況の分析および改善</li>
+          <li>サービス向上のための統計データ取得</li>
+          <li>お客様に合わせた広告の配信</li>
+        </ul>
+        <p>お客様はブラウザの設定により、クッキーの使用を拒否することが可能です。ただし、その場合、当サイトの一部サービスをご利用いただけなくなる可能性がありますのでご了承ください。</p>
+        <p><strong>(9) 個人情報保護方針</strong><br>当社ホームページの個人情報保護方針をご覧ください。</p>
+
+        <h3>【問合せ窓口】</h3>
+        <table>
+          <tr><td>窓口の名称</td><td>個人情報問合せ窓口</td></tr>
+          <tr><td>窓口責任者</td><td>今野 拓也</td></tr>
+          <tr><td>住所</td><td>東京都豊島区東池袋1-34-5 いちご東池袋ビル 203</td></tr>
+          <tr><td>連絡先</td><td>t-konno@wytel.jp</td></tr>
+        </table>
+        <p style="text-align:right;">2026年7月2日 制定<br>株式会社Wytel<br>代表取締役　青木 涼太</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- #root -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+'use strict';
+
+// ── DATA ──────────────────────────────────────────
+const SVC_SLIDES = [
+  { num:'01', id:'se-pg',      numLabel:'SE · PG',      title:'システムエンジニアリングサービス',
+    body:'お客様先に技術者を常駐させ、IT関連の業務を支援致します。インフラ構築・運用保守から業務アプリケーション開発まで幅広く対応します。',
+    blobRadius:'42% 58% 63% 37% / 41% 44% 56% 59%', cardBg:'#b8d0cd', href:'service-se-pg.html' },
+  { num:'02', id:'contract',   numLabel:'DEVELOPMENT',  title:'受託開発',
+    body:'要件定義から運用まで一気通貫で伴走します。「何を作るべきか」から一緒に考え、開発・インフラの両領域を上流工程から支援します。',
+    blobRadius:'65% 35% 28% 72% / 58% 42% 68% 32%', cardBg:'#eeddd0', href:'service-contract-development.html' },
+  { num:'03', id:'support',    numLabel:'SUPPORT',      title:'企画・マーケティング、デザイン、カスタマーサポート',
+    body:'システムの新しい運用提案や担当者変更時の操作説明など、導入後のサポートも充実。ハードウェア・ネットワーク障害時の各種保守サービスもご提供しております。',
+    blobRadius:'37% 63% 71% 29% / 65% 28% 72% 35%', cardBg:'#d0e4e0', href:'service-support.html' },
+  { num:'04', id:'useware',    numLabel:'USEWARE',      title:'コンピュータ及び関連機器の販売・ユースウェア業務',
+    body:'ご購入後の導入・設定から教育支援まで、お客様が通常業務で支障なくシステムを運用できるよう各種支援メニューをご用意しています。',
+    blobRadius:'48% 52% 33% 67% / 72% 28% 58% 42%', cardBg:'#dce8e4', href:'service-useware.html' },
+];
+
+// ── SCROLL REVEAL ─────────────────────────────────
+const root = document.getElementById('root');
+
+function revealEl(el){
+  if(el.classList.contains('wy-in')) return;
+  const rd = parseInt(el.getAttribute('data-rd') || '0', 10);
+  setTimeout(() => el.classList.add('wy-in'), rd);
+}
+
+function initReveal(){
+  root.classList.add('wy-armed');
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ revealEl(e.target); io.unobserve(e.target); }
+    });
+  }, { threshold:0.12, rootMargin:'0px 0px -6% 0px' });
+
+  function scanAll(){
+    const vh = window.innerHeight;
+    root.querySelectorAll('[data-reveal]').forEach(el => {
+      if(el.classList.contains('wy-in')) return;
+      const r = el.getBoundingClientRect();
+      if(r.top < vh * 0.96 && r.bottom > 0) revealEl(el);
+      else io.observe(el);
+    });
+  }
+
+  // First pass: immediate + after short delay for dynamic content
+  scanAll();
+  setTimeout(scanAll, 300);
+  window.addEventListener('scroll', scanAll, { passive:true });
+}
+
+function observeNew(el){
+  // Call after dynamically adding [data-reveal] elements
+  setTimeout(() => {
+    const vh = window.innerHeight;
+    root.querySelectorAll('[data-reveal]').forEach(el2 => {
+      if(!el2.classList.contains('wy-in')){
+        const r = el2.getBoundingClientRect();
+        if(r.top < vh * 0.96 && r.bottom > 0) revealEl(el2);
+      }
+    });
+  }, 50);
+}
+
+// ── SERVICE CAROUSEL ──────────────────────────────
+let activeSvc = 0;
+let svcScrollEnabled = false;
+
+function buildSvcDots(){
+  const dotsEl = document.getElementById('svc-dots');
+  const hintEl = document.getElementById('svc-scroll-hint');
+  dotsEl.innerHTML = '';
+  SVC_SLIDES.forEach((s, i) => {
+    const active = i === activeSvc;
+    const btn = document.createElement('button');
+    btn.className = 'svc-dot-btn';
+    btn.innerHTML = `
+      <div class="svc-dot-line" style="width:${active?'44px':'18px'};background:${active?'var(--ink)':'var(--line)'}"></div>
+      <span class="svc-dot-num" style="font-weight:${active?700:400};color:${active?'var(--ink)':'var(--line)'}">${s.num}</span>`;
+    btn.onclick = () => { activeSvc = i; renderSvcCards(); buildSvcDots(); };
+    dotsEl.appendChild(btn);
+  });
+  hintEl.innerHTML = `<span>${activeSvc < 4 ? 'scroll ↓' : 'scroll ↑↓'}</span>`;
+}
+
+function renderSvcCards(){
+  const wrap = document.getElementById('svc-cards');
+  wrap.innerHTML = '';
+  SVC_SLIDES.forEach((s, i) => {
+    const pos = i - activeSvc;
+    let transform, opacity, zIndex, pe;
+    if(pos === 0){
+      transform='scale(1) rotate(0deg)'; opacity=1; zIndex=5; pe='auto';
+    } else if(pos < 0 && pos >= -4){
+      const p = Math.abs(pos);
+      transform=`scale(${1-p*0.07}) rotate(${-p*2.5}deg) translate(${p*12}px,${p*10}px)`;
+      opacity=Math.max(0,1-p*0.22); zIndex=5-p; pe='none';
+    } else {
+      transform='scale(1.04) translateY(70px)'; opacity=0; zIndex=0; pe='none';
+    }
+    const card = document.createElement('div');
+    card.className = 'svc-card';
+    card.style.cssText = `background:${s.cardBg};border-radius:${s.blobRadius};z-index:${zIndex};opacity:${opacity};transform:${transform};pointer-events:${pe};`;
+    card.innerHTML = `
+      <div class="svc-card-num">${s.num} / ${s.numLabel}</div>
+      <h3 class="svc-card-title">${s.title}</h3>
+      <p class="svc-card-body">${s.body}</p>
+      <a href="${s.href}" class="svc-card-link">詳しく見る →</a>`;
+    wrap.appendChild(card);
+  });
+}
+
+function buildSvcFallback(){
+  const list = document.getElementById('svc-list');
+  list.innerHTML = '';
+  SVC_SLIDES.forEach(s => {
+    const a = document.createElement('a');
+    a.href = s.href;
+    a.className = 'svc-row';
+    a.setAttribute('data-reveal','');
+    a.innerHTML = `
+      <span class="svc-row-num">${s.num}</span>
+      <span class="svc-row-title">${s.title}</span>
+      <span class="svc-row-arr">→</span>`;
+    list.appendChild(a);
+  });
+}
+
+function initSvc(){
+  buildSvcFallback();
+  buildSvcDots();
+  renderSvcCards();
+
+  const svcEl = document.getElementById('service');
+  let wcd = false;
+
+  const onWheel = e => {
+    const rect = svcEl.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const filling = rect.top < vh*0.22 && rect.bottom > vh*0.78;
+    if(!filling) return;
+    const down = e.deltaY > 0;
+    if(down && activeSvc === 3){ window.scrollBy({top:vh, behavior:'smooth'}); return; }
+    if(!down && activeSvc === 0) return;
+    e.preventDefault();
+    if(wcd) return;
+    wcd = true;
+    setTimeout(() => { wcd = false; }, 750);
+    activeSvc = Math.min(3, Math.max(0, activeSvc + (down?1:-1)));
+    renderSvcCards();
+    buildSvcDots();
+  };
+
+  // check if scroll mode possible (only on wide viewport)
+  if(window.innerWidth >= 768){
+    svcScrollEnabled = true;
+    document.getElementById('svc-scroll').style.display = 'flex';
+    document.getElementById('svc-fallback').style.display = 'none';
+    window.addEventListener('wheel', onWheel, { passive:false });
+  } else {
+    svcScrollEnabled = false;
+    document.getElementById('svc-scroll').style.display = 'none';
+    document.getElementById('svc-fallback').style.display = 'block';
+  }
+}
+
+// ── TYPEWRITER ────────────────────────────────────
+function initTypewriter(){
+  const el = document.getElementById('hero-typed');
+  const SPEED = 65, PAUSE = 550;
+  const SEGS = [
+    { type:'text', text:'私たちは、人とテクノロジーを強固に', start:0 },
+    { type:'word', en:'Connect',  ja:'繋ぎ',  key:'connect',  start:17 },
+    { type:'text', text:'、', start:24 },
+    { type:'br',   start:25 },
+    { type:'text', text:'知的な', start:25 },
+    { type:'word', en:'Innovate', ja:'革新',  key:'innovate', start:28 },
+    { type:'text', text:'を起こし、まだ見ぬ未来を', start:36 },
+    { type:'word', en:'Create',   ja:'創造',  key:'create',   start:48 },
+    { type:'text', text:'します。', start:54 },
+  ];
+  const TOTAL = 57;
+  const wordJa = { connect:false, innovate:false, create:false };
+  let pos = -1;
+  let phase = 'running';
+
+  function render(){
+    const nodes = [];
+    let passedBr = false;
+    const beforeBr = [], afterBr = [];
+    for(const seg of SEGS){
+      if(pos < seg.start) break;
+      if(seg.type === 'br'){ passedBr = true; continue; }
+      const target = passedBr ? afterBr : beforeBr;
+      if(seg.type === 'text'){
+        const s = seg.text.slice(0, pos - seg.start + 1);
+        if(s) target.push(document.createTextNode(s));
+      } else {
+        const span = document.createElement('span');
+        span.style.cssText = 'position:relative;display:inline-block;font-weight:700;font-size:1.16em;cursor:default;';
+        if(wordJa[seg.key]){
+          // en overlay — hidden by default, shown on hover
+          const en = document.createElement('span');
+          en.style.cssText = `position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-9deg) scale(1.18);font-family:'Kaushan Script',cursive;font-weight:400;font-size:0.78em;line-height:1;letter-spacing:-0.01em;color:var(--accentText);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity 0.22s;`;
+          en.textContent = seg.en;
+          const ja = document.createElement('span');
+          ja.style.cssText = 'transition:opacity 0.22s;';
+          ja.textContent = seg.ja;
+          span.appendChild(en);
+          span.appendChild(ja);
+          span.addEventListener('mouseenter', () => { en.style.opacity = '1'; ja.style.opacity = '0'; });
+          span.addEventListener('mouseleave', () => { en.style.opacity = '0'; ja.style.opacity = '1'; });
+        } else {
+          const t = seg.en.slice(0, pos - seg.start + 1);
+          const s = document.createElement('span');
+          s.style.cssText = `font-family:'Kaushan Script',cursive;color:var(--accentText);font-weight:400;font-size:0.9em;`;
+          s.textContent = t;
+          span.appendChild(s);
+        }
+        target.push(span);
+      }
+    }
+    if(phase === 'running'){
+      const caret = document.createElement('span');
+      caret.style.cssText = 'display:inline-block;width:2px;height:0.8em;background:currentColor;vertical-align:middle;margin-left:2px;animation:wy-caret 0.75s step-end infinite;';
+      (passedBr ? afterBr : beforeBr).push(caret);
+    }
+    el.innerHTML = '';
+    beforeBr.forEach(n => el.appendChild(n));
+    if(passedBr){
+      el.appendChild(document.createElement('br'));
+      const line2 = document.createElement('span');
+      line2.style.whiteSpace = 'nowrap';
+      afterBr.forEach(n => line2.appendChild(n));
+      el.appendChild(line2);
+    }
+  }
+
+  const CONNECT_END=23, INNOVATE_END=35, CREATE_END=53;
+  function tick(){
+    pos++;
+    render();
+    if(pos === CONNECT_END) setTimeout(()=>{ wordJa.connect=true; render(); }, PAUSE);
+    if(pos === INNOVATE_END) setTimeout(()=>{ wordJa.innovate=true; render(); }, PAUSE);
+    if(pos === CREATE_END) setTimeout(()=>{ wordJa.create=true; render(); }, PAUSE);
+    if(pos < TOTAL) setTimeout(tick, SPEED);
+    else setTimeout(()=>{ phase='done'; render(); }, PAUSE+100);
+  }
+  setTimeout(tick, 1700);
+}
+
+// ── SCROLL-BASED ──────────────────────────────────
+function initScroll(){
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 300) backTop.classList.add('visible');
+    else backTop.classList.remove('visible');
+  }, { passive:true });
+  backTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+}
+
+// ── THEME SWITCHER ────────────────────────────────
+function initTheme(){
+  const btns = document.querySelectorAll('.pill-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-mode');
+      document.body.setAttribute('data-mode', mode === 'serene' ? '' : mode);
+      btns.forEach(b => {
+        b.className = 'pill-btn ' + (b === btn ? 'active' : 'inactive');
+      });
+    });
+  });
+}
+
+// ── CONTACT FORM ──────────────────────────────────
+function initForm(){
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const success = document.getElementById('contact-success');
+
+  form.addEventListener('input', () => {
+    submitBtn.disabled = !form.checkValidity();
+  });
+  form.addEventListener('change', () => {
+    submitBtn.disabled = !form.checkValidity();
+  });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    form.style.display = 'none';
+    success.style.display = 'block';
+  });
+
+}
+
+// ── INIT ──────────────────────────────────────────
+initReveal();
+initSvc();
+initTypewriter();
+initScroll();
+initTheme();
+initForm();
+
+});
+</script>
+</body>
+</html>

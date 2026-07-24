@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー | 株式会社Wytel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:#fff;color:#333;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;}
+
+.wy-armed [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity 1.05s cubic-bezier(.22,1,.36,1),transform 1.05s cubic-bezier(.22,1,.36,1);}
+.wy-armed [data-reveal].wy-in{opacity:1;transform:none;}
+[data-reveal].wy-force{opacity:1!important;transform:none!important;transition:none!important;}
+@media(prefers-reduced-motion:reduce){.wy-armed [data-reveal]{opacity:1;transform:none;transition:none;}}
+
+header{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(51,51,51,0.07);}
+.hdr-inner{max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,40px);height:68px;display:flex;align-items:center;justify-content:space-between;}
+.hdr-logo img{height:40px;width:auto;display:block;}
+.hdr-logo{text-decoration:none;}
+.hdr-back{text-decoration:none;color:#555;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;letter-spacing:.14em;transition:opacity .2s;}
+.hdr-back:hover{opacity:.5;}
+
+#back-top{position:fixed;bottom:clamp(24px,4vw,40px);right:clamp(24px,4vw,40px);z-index:100;width:100px;height:100px;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;padding:0;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;}
+#back-top.visible{opacity:1;pointer-events:auto;}
+
+h2{font-size:clamp(15px,1.3vw,17px);font-weight:700;color:#333;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid rgba(184,208,205,0.6);}
+p{font-size:clamp(14px,1.2vw,16px);line-height:2.2;color:#5a615f;margin:0 0 16px;}
+ul{margin:0 0 16px;padding-left:1.4em;font-size:clamp(14px,1.2vw,16px);line-height:2.2;color:#5a615f;}
+.sec-block{margin-bottom:clamp(32px,4vw,44px);}
+
+.info-grid{display:grid;grid-template-columns:clamp(80px,22%,180px) 1fr;border-top:1px solid rgba(51,51,51,0.1);}
+.info-grid .lbl{padding:12px 16px 12px 0;font-size:14px;font-weight:500;color:#5f7d77;border-bottom:1px solid rgba(51,51,51,0.07);}
+.info-grid .val{padding:12px 0 12px 16px;font-size:14px;line-height:1.9;color:#5a615f;border-bottom:1px solid rgba(51,51,51,0.07);}
+.info-grid .lbl:last-of-type,.info-grid .val:last-of-type{border-bottom:none;}
+
+.tbl-grid{display:grid;grid-template-columns:clamp(100px,30%,220px) 1fr;border-top:1px solid rgba(51,51,51,0.1);margin-bottom:20px;}
+.tbl-grid .th{padding:10px 12px 10px 0;font-size:13px;font-weight:600;color:#5f7d77;border-bottom:1px solid rgba(51,51,51,0.07);background:#f8faf9;}
+.tbl-grid .th-r{padding:10px 0 10px 14px;font-size:13px;font-weight:600;color:#5f7d77;border-bottom:1px solid rgba(51,51,51,0.07);background:#f8faf9;}
+.tbl-grid .td{padding:10px 12px 10px 0;font-size:13px;color:#333;border-bottom:1px solid rgba(51,51,51,0.07);}
+.tbl-grid .td-r{padding:10px 0 10px 14px;font-size:13px;line-height:1.8;color:#5a615f;border-bottom:1px solid rgba(51,51,51,0.07);}
+.tbl-grid .td:last-of-type,.tbl-grid .td-r:last-of-type{border-bottom:none;}
+
+.measure-box{padding:clamp(16px,2vw,22px);background:#f4f7f6;border-left:3px solid #b8d0cd;margin-bottom:16px;}
+.measure-box .box-title{font-size:14px;font-weight:700;color:#333;margin-bottom:8px;}
+.measure-box ul{margin:0;padding-left:1.4em;font-size:13px;line-height:2;color:#5a615f;}
+
+.sign{text-align:right;padding-top:clamp(24px,3vw,36px);border-top:1px solid rgba(51,51,51,0.1);}
+.sign p{font-size:14px;line-height:2.2;color:#5a615f;margin:0;}
+
+footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',sans-serif;}
+.ftr-inner{max-width:1320px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px) clamp(32px,4vw,48px);display:grid;grid-template-columns:1fr auto auto auto;gap:clamp(32px,5vw,64px);align-items:start;}
+.ftr-col{display:flex;flex-direction:column;gap:10px;}
+.ftr-label{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:12px;letter-spacing:.2em;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+.ftr-col a{text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;transition:color .2s;}
+.ftr-col a:hover{color:#fff;}
+.ftr-copy{border-top:1px solid rgba(255,255,255,0.08);padding:clamp(16px,2.5vw,24px) clamp(20px,4vw,40px);text-align:center;}
+.ftr-copy span{font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,0.35);}
+@media(max-width:900px){.ftr-inner{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.ftr-inner{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="root">
+
+<header>
+  <div class="hdr-inner">
+    <a href="index.html" class="hdr-logo"><img src="Wロゴ三角.png" alt="Wytel" onerror="this.src='https://www.wytel.jp/wp-content/uploads/2024/04/logo.png'"></a>
+    <a href="index.html" class="hdr-back">← HOME</a>
+  </div>
+</header>
+
+<button id="back-top">
+  <svg viewBox="0 0 80 80" width="100" height="100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;">
+    <path d="M40,6 C52,4 68,10 74,22 C80,34 78,52 70,62 C62,72 46,78 34,74 C22,70 8,60 6,46 C4,32 10,14 22,8 C28,5 34,7 40,6 Z" fill="#b8d0cd"></path>
+  </svg>
+  <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;margin-bottom:1px;">
+    <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+  <span style="position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;letter-spacing:.14em;color:#fff;line-height:1;">TOP</span>
+</button>
+
+<!-- HERO -->
+<section style="padding-top:68px;background:#f4f7f6;position:relative;overflow:hidden;min-height:36vh;display:flex;align-items:center;">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,4vw,40px);position:relative;z-index:2;width:100%;">
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:10px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(52px,8vw,110px);color:#9aa8a5;text-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:1;letter-spacing:.04em;">PRIVACY</div>
+      <div style="font-size:clamp(13px,1.1vw,15px);color:#5a615f;letter-spacing:.2em;">プライバシーポリシー</div>
+    </div>
+  </div>
+</section>
+
+<!-- 本文 -->
+<section style="padding:clamp(64px,9vw,120px) clamp(20px,4vw,40px);">
+  <div style="max-width:800px;margin:0 auto;">
+
+    <!-- ■個人情報保護方針 -->
+    <div class="sec-block" data-reveal="" style="margin-top:0;">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(20px,2.2vw,26px);color:#5f7d77;border-bottom:2px solid #b8d0cd;letter-spacing:.08em;">■個人情報保護方針</h2>
+      <p>株式会社Wytelは、システム開発事業を実施する上で、お客様の個人情報がプライバシーを構成する重要な情報であることを深く認識し、業務において個人情報を取り扱う場合には、個人情報に関する法令及び個人情報保護のために定めた社内規定を定め、また、組織体制を整備し、個人情報の適切な保護に努めることにより、お客様を尊重し、当社に対する期待と信頼に応えていきます。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="40">
+      <h2>（1）個人情報の取得、利用、提供</h2>
+      <p>当社は、事業活動の範囲内で個人情報の利用目的を特定し、その目的達成のために必要な限度で公正かつ適正に個人情報の取得、利用及び提供を行います。また、取得した個人情報の目的外利用をしないよう処置を講じます。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="60">
+      <h2>（2）法令・規範の遵守</h2>
+      <p>当社は、個人情報に関する法令、国が定める指針、その他の規範及び社会秩序を遵守し、個人情報の適切な保護に努めます。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="80">
+      <h2>（3）個人情報の適切な管理</h2>
+      <p>当社は、私たちが取り扱う個人情報について、不正アクセス、紛失、破壊、改ざん、漏えい、滅失又は毀損などの危険を十分に認識し、合理的な安全対策を実施するとともに、問題が発生した場合は適切な是正措置を講じます。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="100">
+      <h2>（4）問い合わせへの対応</h2>
+      <p>当社は、私たちが取り扱う個人情報について、本人から開示、訂正、利用停止及び苦情相談等のお問い合わせがあった場合は適正に対応します。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="120">
+      <h2>（5）継続的改善</h2>
+      <p>当社は、個人情報保護に関する管理規定及び管理体制を整備し、全社員で徹底して運用するとともに定期的な見直しを行い、個人情報保護マネジメントシステムの継続的な改善に努めます。</p>
+    </div>
+
+    <!-- ■当社が取扱う個人情報について -->
+    <div class="sec-block" data-reveal="" data-rd="140" style="margin-top:clamp(60px,9vw,100px);">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(20px,2.2vw,26px);color:#5f7d77;border-bottom:2px solid #b8d0cd;letter-spacing:.08em;">■当社が取扱う個人情報について</h2>
+      <p>当社では「個人情報保護方針」に基づき個人情報の適切な保護に取り組んでいます。当社が事業の用に供するために取得し、または保有する個人情報について、以下の通りお知らせいたします。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="160">
+      <h2>（1）個人情報の取扱事業者の名称及び住所並びに法人にあたってはその代表者の氏名</h2>
+      <div class="info-grid">
+        <div class="lbl">事業者名</div><div class="val">株式会社Wytel</div>
+        <div class="lbl">代表取締役</div><div class="val">青木 涼太</div>
+        <div class="lbl" style="border-bottom:none;">住所</div><div class="val" style="border-bottom:none;">東京都豊島区東池袋1-34-5 いちご東池袋ビル 203</div>
+      </div>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="180">
+      <h2>（2）個人情報保護管理者（若しくはその代理人）の氏名又は職名、所属及び連絡先</h2>
+      <div class="info-grid">
+        <div class="lbl">個人情報保護管理者</div><div class="val">今野 拓也</div>
+        <div class="lbl" style="border-bottom:none;">電子メール</div><div class="val" style="border-bottom:none;"><a href="mailto:t-konno@wytel.jp" style="color:#5f7d77;text-decoration:none;border-bottom:1px solid #b8d0cd;">t-konno@wytel.jp</a></div>
+      </div>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="200">
+      <h2>（3）個人情報の利用目的</h2>
+      <p>当社が事業活動において取扱う個人情報の利用目的は、次の通りといたします。</p>
+      <p style="font-size:14px;font-weight:600;color:#333;margin:0 0 10px;">① 保有個人データ</p>
+      <div class="tbl-grid">
+        <div class="th">情報の種類</div><div class="th-r">利用目的</div>
+        <div class="td">取引先情報</div><div class="td-r">業務管理、各種連絡、請求、支払い管理のため</div>
+        <div class="td">従業者情報</div><div class="td-r">従業者管理に係わる業務に利用するため（業務・労務・人事管理業務、給与関連業務、福利厚生業務など）</div>
+        <div class="td">採用応募者情報</div><div class="td-r">採用に係わる業務に利用するため（採用に関する情報提供、採用可否判断、採用業務に関する連絡など）</div>
+        <div class="td">退職者情報</div><div class="td-r">退職者との連絡、退職者からのお問合せへの対応に利用するため</div>
+        <div class="td">お問合せ者情報</div><div class="td-r">お問合せに回答するため</div>
+        <div class="td" style="border-bottom:none;">本人および代理人の情報（開示等請求時）</div><div class="td-r" style="border-bottom:none;">開示等の求めに回答するため</div>
+      </div>
+      <p style="font-size:13px;line-height:2;color:#5a615f;margin:0 0 20px;">その他、個別に書面で明示したとおりの利用目的とします。</p>
+      <p style="font-size:14px;font-weight:600;color:#333;margin:0 0 10px;">② それ以外取得個人情報</p>
+      <div class="tbl-grid" style="margin-bottom:0;">
+        <div class="th">情報の種類</div><div class="th-r">利用目的</div>
+        <div class="td">受託した業務により取得した個人情報</div><div class="td-r">契約及びそれに伴う連絡、受託業務の遂行、アフターケアなどに利用するため</div>
+        <div class="td" style="border-bottom:none;">求人サイトから取得した情報</div><div class="td-r" style="border-bottom:none;">求人者に対する採用の可否を判断・通知するため</div>
+      </div>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="220">
+      <h2>（4）個人情報に関するお問合せ窓口</h2>
+      <p>保有個人データに関わるものを含め、個人情報の取扱についての苦情・相談、問合せは、下記の【問合せ窓口】までお申し出ください。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="230">
+      <h2>（5）所属する認定個人情報保護団体の名称および苦情の解決の申し出先</h2>
+      <p>なし</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="240">
+      <h2>（6）開示等の手続について</h2>
+      <p>当社では、保有個人データに関して、ご本人の開示等（利用目的の通知、開示、内容の訂正、追加又は削除、利用の停止、消去、第三者への提供の停止および第三者提供記録の開示）の請求に迅速に対応いたします。ご希望される場合には、お申し出いただいた方がご本人或いはその代理人であることを確認した上で、合理的な期間及び範囲で対応いたします。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="250">
+      <h2>（7）開示等の受付方法・窓口</h2>
+      <p>保有個人データに関する開示等のお申し出は、下記の受付窓口までご連絡ください。ご連絡いただきましたら、当社所定の「保有個人データ開示等請求書」を郵送または、FAX、メール等でお送り致します。内容ご記入の上必要書類を同封し、郵送またはメール等にてお申し込み下さい。（送付料は請求者のご負担となります。）</p>
+      <p>ご本人（または代理人）であることを確認した上で、ご希望の開示方法により回答いたします。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="260">
+      <h2>（8）個人情報の安全管理のために講じた措置について</h2>
+      <p>当社では、個人情報を厳正に取り扱うため、JIS Q 15001に準拠した個人情報保護方針を基に、個人情報に関する規程等を策定し、個人情報保護マネジメントシステムを運用しています。個人情報の適正な取扱いの確保のため、組織的・人的・物理的・技術的の4つの観点より安全管理措置を講じています。</p>
+      <div class="measure-box">
+        <div class="box-title">組織的対策</div>
+        <ul>
+          <li>従業員を監督し、個人情報漏えい等の緊急事態発生時の責任者への報告連絡体制を整備しています。</li>
+          <li>個人情報の取り扱い状況について定期的に社内監査にて確認しています。</li>
+          <li>利用目的に照らして不要となった個人情報については、速やかに且つ適正に削除・廃棄いたします。</li>
+        </ul>
+      </div>
+      <div class="measure-box">
+        <div class="box-title">人的対策</div>
+        <ul>
+          <li>個人情報を含む機密保持契約書類を取得しています。</li>
+        </ul>
+      </div>
+      <div class="measure-box">
+        <div class="box-title">物理的対策</div>
+        <ul>
+          <li>入退室管理を実施し、当社で許可した場所以外での取り扱いを禁止するとともに、権限を有しない者による個人情報の閲覧を防止する措置を実施しています。</li>
+          <li>個人情報を取り扱う機器、電子媒体及び書類等は事業所内の移動を含め、社外で持ち運ぶ場合、盗難・紛失に注意するとともに容易に個人情報が判明しないよう措置を講じています。</li>
+        </ul>
+      </div>
+      <div class="measure-box" style="margin-bottom:12px;">
+        <div class="box-title">技術的対策</div>
+        <ul>
+          <li>アクセス権を持つIDは個人情報保護管理者が発行・更新・廃棄の管理を行い、情報を使用しなくなったユーザのアクセス権は直ちに抹消します。</li>
+        </ul>
+      </div>
+      <p style="font-size:13px;line-height:2;color:#5a615f;margin:0;">具体的な安全管理措置については下記【問合せ窓口】よりお問い合わせください。</p>
+    </div>
+
+    <!-- ■お問い合わせにおける個人情報の取扱いについて -->
+    <div class="sec-block" data-reveal="" data-rd="270" style="margin-top:clamp(60px,9vw,100px);">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(20px,2.2vw,26px);color:#5f7d77;border-bottom:2px solid #b8d0cd;letter-spacing:.08em;">■お問い合わせにおける個人情報の取扱いについて</h2>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="280">
+      <h2>（1）組織の名称又は氏名</h2>
+      <p>株式会社Wytel</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="285">
+      <h2>（2）個人情報保護管理者（若しくはその代理人）の氏名又は職名、所属及び連絡先</h2>
+      <div class="info-grid">
+        <div class="lbl">個人情報保護管理者</div><div class="val">今野 拓也</div>
+        <div class="lbl">所属</div><div class="val">ソリューション事業部</div>
+        <div class="lbl" style="border-bottom:none;">連絡先</div><div class="val" style="border-bottom:none;"><a href="mailto:t-konno@wytel.jp" style="color:#5f7d77;text-decoration:none;border-bottom:1px solid #b8d0cd;">t-konno@wytel.jp</a></div>
+      </div>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="290">
+      <h2>（3）個人情報の利用目的</h2>
+      <p>お問い合わせいただいた内容の回答における個人情報の取扱いについて、お問い合わせいただいた内容に回答するため。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="295">
+      <h2>（4）個人情報の第三者提供について</h2>
+      <p>取得した個人情報は、法令等による場合を除いて第三者に提供しません。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="300">
+      <h2>（5）個人情報の取扱いの委託について</h2>
+      <p>取得した個人情報の取扱いの全部又は、一部を委託することがあります。その場合には、当社において最善の考慮を行います。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="305">
+      <h2>（6）個人情報を与えなかった場合に生じる結果</h2>
+      <p>個人情報を与えることは任意です。個人情報に関する情報の一部をご提供いただけない場合は、お問い合わせ内容に回答できない可能性があります。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="310">
+      <h2>（7）保有個人データの開示等および問い合わせ窓口について</h2>
+      <p>ご本人からの求めにより、当社が保有する保有個人データに関する開示、利用目的の通知、内容の訂正・追加または削除、利用停止、消去、第三者提供の停止および第三者提供記録の開示（以下、開示等という）に応じます。</p>
+      <p>開示等に応ずる窓口は、下記「当社の個人情報の取扱いに関する苦情、相談等の問合せ先」を参照してください。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="315">
+      <h2>（8）本人が容易に認識できない方法による個人情報の取得</h2>
+      <p>当ウェブサイトでは、お客様により良いサービスを提供するため、クッキー（Cookie）やWebビーコン等を使用し、利用状況等の情報を収集する場合があります。</p>
+      <p>これらの技術により取得された情報には、IPアドレス、閲覧したページ、クリック履歴等が含まれますが、これらの情報単体では特定の個人を識別するものではありません。</p>
+      <p>ただし、これらの情報とお客様ご本人からご提供いただいた情報を組み合わせて利用する場合、当社はそれらを個人情報として適切に管理・保護いたします。</p>
+      <p style="font-size:14px;font-weight:600;color:#333;margin:0 0 8px;">クッキーの利用目的は以下の通りです：</p>
+      <ul>
+        <li>ウェブサイトの利用状況の分析および改善</li>
+        <li>サービス向上のための統計データ取得</li>
+        <li>お客様に合わせた広告の配信</li>
+      </ul>
+      <p>お客様はブラウザの設定により、クッキーの使用を拒否することが可能です。ただし、その場合、当サイトの一部サービスをご利用いただけなくなる可能性がありますのでご了承ください。</p>
+    </div>
+
+    <div class="sec-block" data-reveal="" data-rd="320">
+      <h2>（9）個人情報保護方針</h2>
+      <p>当社ホームページの個人情報保護方針をご覧ください。</p>
+    </div>
+
+    <!-- 【問合せ窓口】 -->
+    <div class="sec-block" data-reveal="" data-rd="330" style="margin-top:clamp(60px,9vw,100px);">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(20px,2.2vw,26px);color:#5f7d77;border-bottom:2px solid #b8d0cd;letter-spacing:.08em;">【問合せ窓口】</h2>
+      <div class="info-grid">
+        <div class="lbl">窓口の名称</div><div class="val">個人情報問合せ窓口</div>
+        <div class="lbl">窓口責任者</div><div class="val">今野 拓也</div>
+        <div class="lbl">住所</div><div class="val">東京都豊島区東池袋1-34-5 いちご東池袋ビル 203</div>
+        <div class="lbl" style="border-bottom:none;">連絡先</div><div class="val" style="border-bottom:none;"><a href="mailto:t-konno@wytel.jp" style="color:#5f7d77;text-decoration:none;border-bottom:1px solid #b8d0cd;">t-konno@wytel.jp</a></div>
+      </div>
+    </div>
+
+    <!-- 制定日・署名 -->
+    <div class="sign" data-reveal="" data-rd="340">
+      <p>2026年7月2日 制定<br>株式会社Wytel<br>代表取締役　青木 涼太</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="ftr-inner">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <img src="Wロゴ三角.png" alt="Wytel" onerror="this.src='https://www.wytel.jp/wp-content/uploads/2024/04/logo.png'" style="height:36px;width:auto;max-width:120px;display:block;opacity:.85;object-fit:contain;">
+      <p style="margin:0;font-size:13px;line-height:2;color:rgba(255,255,255,0.5);">〒170-0013<br>東京都豊島区東池袋1-34-5<br>いちご東池袋ビル203</p>
+      <p style="margin:0;font-size:13px;line-height:2;color:rgba(255,255,255,0.5);">TEL: 03-5734-1982</p>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-label">MENU</div>
+      <a href="index.html">HOME</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="security-policy.html">情報セキュリティ基本方針</a>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-label">ABOUT</div>
+      <a href="about.html#overview">会社概要</a>
+      <a href="about.html#history">沿革</a>
+      <a href="about.html#access">アクセス</a>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-label">SERVICE</div>
+      <a href="service-se-pg.html">システムエンジニアリングサービス</a>
+      <a href="service-contract-development.html">受託開発</a>
+    </div>
+  </div>
+  <div class="ftr-copy"><span>© 2026 Wytel Inc. All Rights Reserved.</span></div>
+</footer>
+
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const root = document.getElementById('root');
+  root.classList.add('wy-armed');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const rd = parseInt(e.target.getAttribute('data-rd')||'0',10);
+        setTimeout(()=>e.target.classList.add('wy-in'),rd);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -8% 0px'});
+  function scan(){
+    const vh = window.innerHeight;
+    root.querySelectorAll('[data-reveal]').forEach(el=>{
+      if(el.classList.contains('wy-in')) return;
+      const r = el.getBoundingClientRect();
+      if(r.top < vh*0.96 && r.bottom > 0){
+        const rd = parseInt(el.getAttribute('data-rd')||'0',10);
+        setTimeout(()=>el.classList.add('wy-in'),rd);
+      } else { io.observe(el); }
+    });
+  }
+  scan(); setTimeout(scan,300);
+  window.addEventListener('scroll',scan,{passive:true});
+
+  const bt = document.getElementById('back-top');
+  window.addEventListener('scroll', () => bt.classList.toggle('visible', window.scrollY > 300), {passive:true});
+  bt.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+});
+</script>
+</body>
+</html>

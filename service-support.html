@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>企画・マーケティング、デザイン、カスタマーサポート | 株式会社Wytel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:#fff;color:#333;font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+@keyframes wy-blobA{0%,100%{border-radius:42% 58% 63% 37%/41% 44% 56% 59%;}50%{border-radius:58% 42% 37% 63%/56% 59% 41% 44%;}}
+@keyframes wy-blobB{0%,100%{border-radius:63% 37% 51% 49%/37% 51% 49% 63%;}50%{border-radius:37% 63% 49% 51%/63% 49% 51% 37%;}}
+@keyframes wy-drift{0%,100%{transform:translate(0,0);}50%{transform:translate(18px,-22px);}}
+@keyframes wy-driftB{0%,100%{transform:translate(0,0);}50%{transform:translate(-22px,16px);}}
+
+.wy-armed [data-reveal]{opacity:0;transform:translateY(34px);transition:opacity 1.05s cubic-bezier(.22,1,.36,1),transform 1.05s cubic-bezier(.22,1,.36,1);}
+.wy-armed [data-reveal].wy-in{opacity:1;transform:none;}
+[data-reveal].wy-force{opacity:1!important;transform:none!important;transition:none!important;}
+@media(prefers-reduced-motion:reduce){.wy-armed [data-reveal]{opacity:1;transform:none;transition:none;}}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(51,51,51,0.07);}
+.hdr-inner{max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,40px);height:68px;display:flex;align-items:center;justify-content:space-between;}
+.hdr-logo img{height:40px;width:auto;display:block;}
+.hdr-logo{text-decoration:none;}
+nav{display:flex;align-items:center;gap:clamp(20px,3vw,40px);}
+nav a{text-decoration:none;color:#333;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;letter-spacing:.16em;transition:opacity .2s;}
+nav a:hover{opacity:.5;}
+nav .btn-contact{padding:10px 24px;background:#333;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;border-radius:999px;}
+nav .btn-contact:hover{opacity:.75;}
+.nav-svc{position:relative;display:flex;align-items:center;}
+.svc-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 8px 32px -8px rgba(0,0,0,0.14);padding:8px 0;min-width:220px;display:none;flex-direction:column;z-index:200;}
+.svc-drop.open{display:flex;}
+.svc-drop a{padding:11px 20px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:#333;text-decoration:none;letter-spacing:.04em;transition:background .15s;opacity:1 !important;}
+.svc-drop a:hover{background:#f4f8f6;}
+
+/* sections */
+section{padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);}
+.inner{max-width:1100px;margin:0 auto;}
+
+/* section heading */
+.sec-en{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,60px);color:#9aa8a5;line-height:1.1;letter-spacing:.06em;}
+.sec-ja{font-size:14px;color:#333;margin-top:6px;letter-spacing:.14em;}
+.sec-head{margin-bottom:clamp(48px,6vw,72px);}
+
+/* tags / chips */
+.chip{padding:6px 14px;font-family:'Lato',sans-serif;font-size:13px;font-weight:500;letter-spacing:.04em;}
+.chip-outline{padding:6px 14px;font-size:13px;color:#5a615f;background:rgba(184,208,205,0.1);border:1px solid rgba(95,125,119,0.3);}
+
+/* back to top */
+#back-top{position:fixed;bottom:clamp(24px,4vw,40px);right:clamp(24px,4vw,40px);z-index:100;width:100px;height:100px;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;padding:0;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;}
+#back-top.visible{opacity:1;pointer-events:auto;}
+</style>
+</head>
+<body>
+
+<div id="root">
+
+<header>
+  <div class="hdr-inner">
+    <a href="index.html" class="hdr-logo"><img src="Wロゴ三角.png" alt="Wytel"></a>
+    <nav>
+      <a href="index.html">HOME</a>
+      <div class="nav-svc">
+        <a href="index.html#service">SERVICE</a>
+        <div class="svc-drop">
+          <a href="service-se-pg.html">システムエンジニアリングサービス</a>
+          <a href="service-contract-development.html">受託開発</a>
+          <a href="service-support.html">サポート</a>
+          <a href="service-useware.html">ユースウェア</a>
+        </div>
+      </div>
+      <a href="about.html">ABOUT</a>
+      <a href="index.html#partner">PARTNER</a>
+      <a href="index.html#recruit">RECRUIT</a>
+      <a href="index.html#contact" class="btn-contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section style="padding-top:68px;background:#f4f7f6;position:relative;overflow:hidden;min-height:56vh;display:flex;align-items:center;">
+  <div style="position:absolute;z-index:0;pointer-events:none;filter:blur(2px);top:-80px;right:-80px;width:400px;height:400px;background:#cbe0db;opacity:0.4;animation:wy-blobA 14s ease-in-out infinite,wy-drift 19s ease-in-out infinite;border-radius:42% 58% 63% 37%/41% 44% 56% 59%;"></div>
+  <div style="position:absolute;z-index:0;pointer-events:none;filter:blur(2px);bottom:-60px;left:-60px;width:260px;height:260px;background:#ecdcc7;opacity:0.35;animation:wy-blobB 12s ease-in-out infinite,wy-driftB 16s ease-in-out infinite;border-radius:63% 37% 51% 49%/37% 51% 49% 63%;"></div>
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,8vw,120px) clamp(20px,4vw,40px);position:relative;z-index:2;width:100%;">
+    <div data-reveal="">
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(64px,10vw,130px);color:#9aa8a5;line-height:1;letter-spacing:.04em;">SUPPORT</div>
+      <div style="font-size:clamp(13px,1.1vw,16px);color:#5a615f;letter-spacing:.2em;">企画・マーケティング、デザイン、カスタマーサポート</div>
+    </div>
+    <div data-reveal="" data-rd="150" style="margin-top:clamp(20px,2.5vw,32px);width:clamp(48px,6vw,72px);height:2px;background:#b8d0cd;"></div>
+    <p data-reveal="" data-rd="280" style="margin:clamp(24px,3vw,36px) 0 0;max-width:42em;font-size:clamp(14px,1.2vw,17px);line-height:2.1;color:#5a615f;">IT戦略の企画・提案からマーケティング支援、UI/UXデザイン、カスタマーサポートまで、お客様のビジネス成長を多角的な視点でサポートいたします。導入後の定着支援から運用改善まで、一貫した体制でご支援します。</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:#ffffff;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);">
+  <div class="inner">
+    <div data-reveal="" class="sec-head">
+      <div class="sec-en">ABOUT</div>
+      <div class="sec-ja">サポートサービスについて</div>
+    </div>
+    <div data-reveal="" data-rd="80" style="display:flex;flex-direction:column;gap:clamp(20px,2.5vw,28px);max-width:72em;">
+      <p style="font-size:clamp(15px,1.3vw,17px);line-height:2.2;color:#5a615f;margin:0;">システム導入後の定着を支援するため、運用提案・教育・保守まで一貫してサポートします。担当者が変わっても安心して利用できる体制を整えます。</p>
+      <p style="font-size:clamp(15px,1.3vw,17px);line-height:2.2;color:#5a615f;margin:0;">IT戦略の立案からマーケティング施策の企画・実行まで、お客様のビジネス目標に沿った提案を行います。デジタルとリアルを組み合わせた効果的なアプローチをご提供します。</p>
+      <p style="font-size:clamp(15px,1.3vw,17px);line-height:2.2;color:#5a615f;margin:0;">UI/UXデザインやカスタマーサポート運営の支援を通じて、エンドユーザーの満足度向上にも貢献いたします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas" style="background:#f4f7f6;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);">
+  <div class="inner">
+    <div data-reveal="" class="sec-head">
+      <div class="sec-en">AREAS</div>
+      <div class="sec-ja">対応領域</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,36px);">
+      <!-- 企画・マーケティング -->
+      <div data-reveal="" data-rd="0" style="background:#fff;padding:clamp(28px,3.5vw,44px);border-top:3px solid #b8d0cd;border-radius:18px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3vw,38px);color:#5f7d77;letter-spacing:.06em;margin-bottom:6px;">Planning</div>
+        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#333;margin-bottom:clamp(20px,2.5vw,28px);">企画・マーケティング</div>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7d77;margin-bottom:10px;">対応内容</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="chip-outline">IT戦略立案</span><span class="chip-outline">デジタルマーケティング</span><span class="chip-outline">ブランディング</span><span class="chip-outline">SNS運用支援</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7d77;margin-bottom:10px;">デザイン</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="chip" style="background:#f4f7f6;color:#333;">UI/UXデザイン</span><span class="chip" style="background:#f4f7f6;color:#333;">Webデザイン</span><span class="chip" style="background:#f4f7f6;color:#333;">LP制作</span><span class="chip" style="background:#f4f7f6;color:#333;">バナー制作</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- カスタマーサポート -->
+      <div data-reveal="" data-rd="120" style="background:#fff;padding:clamp(28px,3.5vw,44px);border-top:3px solid #b8d0cd;border-radius:18px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3vw,38px);color:#5f7d77;letter-spacing:.06em;margin-bottom:6px;">Support</div>
+        <div style="font-size:13px;font-weight:600;letter-spacing:.12em;color:#333;margin-bottom:clamp(20px,2.5vw,28px);">カスタマーサポート・教育</div>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7d77;margin-bottom:10px;">サポート対応</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="chip-outline">操作説明</span><span class="chip-outline">ユーザー教育</span><span class="chip-outline">ヘルプデスク</span><span class="chip-outline">運用改善提案</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#5f7d77;margin-bottom:10px;">保守</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="chip" style="background:#f4f7f6;color:#333;">ハードウェア保守</span><span class="chip" style="background:#f4f7f6;color:#333;">ネットワーク保守</span><span class="chip" style="background:#f4f7f6;color:#333;">障害対応</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background:#fff;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);">
+  <div class="inner">
+    <div data-reveal="" class="sec-head">
+      <div class="sec-en">FEATURES</div>
+      <div class="sec-ja">特徴</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,32px);">
+      <div data-reveal="" data-rd="0" style="display:flex;flex-direction:column;gap:16px;padding:clamp(28px,3.5vw,44px) clamp(24px,3vw,36px);border-top:2px solid #b8d0cd;background:#f8faf9;border-radius:18px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(38px,4.5vw,56px);color:#cdddd9;line-height:1;letter-spacing:.02em;">01</div>
+        <div style="font-size:clamp(15px,1.3vw,18px);font-weight:700;color:#333;line-height:1.5;">ビジネス全体を見渡した提案</div>
+        <div style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a615f;">IT戦略・マーケティング・デザインを横断的に捉え、お客様のビジネス成長を多角的な視点でサポートします。部門間の連携を意識した一貫した提案が強みです。</div>
+      </div>
+      <div data-reveal="" data-rd="100" style="display:flex;flex-direction:column;gap:16px;padding:clamp(28px,3.5vw,44px) clamp(24px,3vw,36px);border-top:2px solid #b8d0cd;background:#f8faf9;border-radius:18px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(38px,4.5vw,56px);color:#cdddd9;line-height:1;letter-spacing:.02em;">02</div>
+        <div style="font-size:clamp(15px,1.3vw,18px);font-weight:700;color:#333;line-height:1.5;">導入後の定着まで一貫支援</div>
+        <div style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a615f;">システム・ツール導入後の操作教育、ヘルプデスク運営、運用改善提案まで継続的にご支援。担当者が変わっても安心の体制を整えます。</div>
+      </div>
+      <div data-reveal="" data-rd="200" style="display:flex;flex-direction:column;gap:16px;padding:clamp(28px,3.5vw,44px) clamp(24px,3vw,36px);border-top:2px solid #b8d0cd;background:#f8faf9;border-radius:18px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(38px,4.5vw,56px);color:#cdddd9;line-height:1;letter-spacing:.02em;">03</div>
+        <div style="font-size:clamp(15px,1.3vw,18px);font-weight:700;color:#333;line-height:1.5;">柔軟なカスタマーサポート設計</div>
+        <div style="font-size:clamp(13px,1.1vw,15px);line-height:2;color:#5a615f;">お客様の業種・規模・課題に合わせてカスタマーサポートの体制を設計・構築。エンドユーザーの満足度向上と、お客様企業のブランド価値向上に貢献します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section id="flow" style="background:#f4f7f6;padding:clamp(72px,10vw,130px) clamp(20px,4vw,40px);">
+  <div class="inner">
+    <div data-reveal="" class="sec-head">
+      <div class="sec-en">FLOW</div>
+      <div class="sec-ja">対応の流れ</div>
+    </div>
+    <div style="display:flex;flex-direction:column;">
+      <div data-reveal="" data-rd="0" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div><div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;letter-spacing:.04em;">01</span></div><div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div></div>
+        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;"><div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">お問い合わせ</div><div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">お問い合わせフォームよりご連絡ください。現状の課題やご要望をお気軽にお聞かせください。</div></div>
+      </div>
+      <div data-reveal="" data-rd="80" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div><div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;letter-spacing:.04em;">02</span></div><div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div></div>
+        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;"><div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">ヒアリング・現状把握</div><div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">担当者よりご連絡を差し上げ、ビジネス目標・課題・現状のリソース状況などを詳しくお伺いします。</div></div>
+      </div>
+      <div data-reveal="" data-rd="160" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div><div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;letter-spacing:.04em;">03</span></div><div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div></div>
+        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;"><div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">プランのご提案</div><div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">ヒアリング内容をもとに、最適な支援内容・体制・スケジュールをご提案いたします。</div></div>
+      </div>
+      <div data-reveal="" data-rd="240" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div><div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;letter-spacing:.04em;">04</span></div><div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div></div>
+        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;"><div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">契約・支援開始</div><div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">条件・内容をご確認いただき、合意後に契約を締結。支援を開始いたします。</div></div>
+      </div>
+      <div data-reveal="" data-rd="320" style="display:grid;grid-template-columns:clamp(48px,6vw,72px) 1fr;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;"><div style="width:2px;height:20px;background:rgba(184,208,205,0.4);"></div><div style="width:44px;height:44px;border-radius:50%;background:#b8d0cd;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:16px;color:#fff;letter-spacing:.04em;">05</span></div><div style="width:2px;flex:1;min-height:20px;background:rgba(184,208,205,0.4);"></div></div>
+        <div style="padding:0 0 clamp(28px,3.5vw,40px) clamp(20px,2.5vw,32px);display:flex;flex-direction:column;justify-content:center;"><div style="font-size:clamp(15px,1.3vw,18px);font-weight:600;color:#333;margin-bottom:6px;">継続的なフォロー・改善</div><div style="font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#5a615f;">定期的な効果確認・振り返りを行いながら、継続的な改善提案でビジネスを長期的にサポートします。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#b8d0cd;position:relative;overflow:hidden;padding:clamp(72px,10vw,110px) clamp(20px,4vw,40px);">
+  <div style="position:absolute;z-index:0;pointer-events:none;filter:blur(2px);top:-100px;right:-80px;width:320px;height:320px;background:#f4ede3;opacity:0.4;animation:wy-blobA 16s ease-in-out infinite,wy-drift 20s ease-in-out infinite;border-radius:42% 58% 63% 37%/41% 44% 56% 59%;"></div>
+  <div data-reveal="" style="max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:1;">
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3.5vw,44px);color:#333;line-height:1.4;margin-bottom:clamp(16px,2vw,24px);">企画・マーケティング・サポートのご相談は<br>お気軽にどうぞ</div>
+    <p style="font-size:clamp(14px,1.2vw,16px);line-height:2;color:#41514d;margin:0 0 clamp(28px,3.5vw,40px);">IT戦略の企画からカスタマーサポートの体制構築まで、幅広いご相談をお問い合わせフォームより随時受け付けております。</p>
+    <a href="index.html#contact" style="display:inline-flex;align-items:center;padding:16px 36px;background:#333;color:#fff;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:.06em;transition:opacity .2s;border-radius:999px;">お問い合わせ</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',sans-serif;">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(20px,4vw,40px) clamp(32px,4vw,48px);display:grid;grid-template-columns:1fr auto auto auto;gap:clamp(32px,5vw,64px);align-items:start;">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <img src="Wロゴ三角.png" alt="Wytel" style="height:36px;width:auto;max-width:120px;display:block;opacity:.85;object-fit:contain;">
+      <p style="margin:0;font-size:13px;line-height:2;color:rgba(255,255,255,0.5);">〒170-0013<br>東京都豊島区東池袋1-34-5<br>いちご東池袋ビル203</p>
+      <p style="margin:0;font-size:13px;line-height:2;color:rgba(255,255,255,0.5);">TEL: 03-5734-1982</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:12px;letter-spacing:.2em;color:rgba(255,255,255,0.4);margin-bottom:4px;">MENU</div>
+      <a href="index.html" style="text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;">HOME</a>
+      <a href="privacy-policy.html" style="text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;">プライバシーポリシー</a>
+      <a href="security-policy.html" style="text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;">情報セキュリティ基本方針</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:12px;letter-spacing:.2em;color:rgba(255,255,255,0.4);margin-bottom:4px;">SERVICE</div>
+      <a href="#about" style="text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;">サービス概要</a>
+      <a href="#areas" style="text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;">対応領域</a>
+      <a href="#features" style="text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;">特徴</a>
+      <a href="#flow" style="text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;">対応の流れ</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:12px;letter-spacing:.2em;color:rgba(255,255,255,0.4);margin-bottom:4px;">CONTACT</div>
+      <a href="index.html#contact" style="text-decoration:none;color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:.06em;">お問い合わせ</a>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(16px,2.5vw,24px) clamp(20px,4vw,40px);text-align:center;">
+    <span style="font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,0.35);">© 2026 Wytel Inc. All Rights Reserved.</span>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="back-top">
+  <svg viewBox="0 0 80 80" width="100" height="100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;">
+    <path d="M40,6 C52,4 68,10 74,22 C80,34 78,52 70,62 C62,72 46,78 34,74 C22,70 8,60 6,46 C4,32 10,14 22,8 C28,5 34,7 40,6 Z" fill="#b8d0cd"></path>
+  </svg>
+  <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;margin-bottom:1px;">
+    <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+  <span style="position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;letter-spacing:.14em;color:#fff;line-height:1;">TOP</span>
+</button>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const root = document.getElementById('root');
+  root.classList.add('wy-armed');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const rd = parseInt(e.target.getAttribute('data-rd')||'0',10);
+        setTimeout(()=>e.target.classList.add('wy-in'),rd);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -8% 0px'});
+
+  function scan(){
+    const vh = window.innerHeight;
+    root.querySelectorAll('[data-reveal]').forEach(el=>{
+      if(el.classList.contains('wy-in')) return;
+      const r = el.getBoundingClientRect();
+      if(r.top < vh*0.96 && r.bottom > 0){
+        const rd = parseInt(el.getAttribute('data-rd')||'0',10);
+        setTimeout(()=>el.classList.add('wy-in'),rd);
+      } else { io.observe(el); }
+    });
+  }
+  scan(); setTimeout(scan,300);
+  window.addEventListener('scroll',scan,{passive:true});
+
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll',()=>{
+    backTop.classList.toggle('visible', window.scrollY > 300);
+  },{passive:true});
+  backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  const navSvc=document.querySelector('.nav-svc'),svcDrop=document.querySelector('.svc-drop');
+  let closeTimer;
+  navSvc.addEventListener('mouseenter',()=>{clearTimeout(closeTimer);svcDrop.classList.add('open');});
+  navSvc.addEventListener('mouseleave',()=>{closeTimer=setTimeout(()=>svcDrop.classList.remove('open'),150);});
+});
+</script>
+</body>
+</html>
