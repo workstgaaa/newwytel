@@ -219,9 +219,6 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 /* ── THEME SWITCHER ───────────────────── */
 #theme-pill{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:90;display:flex;align-items:center;gap:7px;background:rgba(51,51,51,0.94);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-radius:999px;padding:7px 9px 7px 16px;box-shadow:0 18px 44px -18px rgba(0,0,0,.55);}
 #theme-pill .pill-label{font-family:'Lato',sans-serif;font-size:10px;letter-spacing:.18em;color:#b8d0cd;}
-.pill-btn{border:none;display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:999px;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .25s ease;}
-.pill-btn.active{background:#ffffff;color:#333;}
-.pill-btn.inactive{background:transparent;color:#cfe0db;}
 
 /* ── PRIVACY MODAL ────────────────────── */
 #privacy-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;padding:24px;}
@@ -548,13 +545,6 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
     <span class="back-top-label">TOP</span>
   </button>
 
-  <!-- THEME PILL -->
-  <div id="theme-pill">
-    <span class="pill-label">STYLE</span>
-    <button class="pill-btn inactive" data-mode="serene">Serene <span style="opacity:.55;font-size:11px;">静</span></button>
-    <button class="pill-btn active" data-mode="soft">Soft <span style="opacity:.55;font-size:11px;">和</span></button>
-    <button class="pill-btn inactive" data-mode="bold">Bold <span style="opacity:.55;font-size:11px;">構</span></button>
-  </div>
 
   <!-- privacy modal removed — see privacy-policy.html -->
   <div id="privacy-modal" style="display:none!important">
@@ -929,19 +919,6 @@ function initScroll(){
   backTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
 }
 
-// ── THEME SWITCHER ────────────────────────────────
-function initTheme(){
-  const btns = document.querySelectorAll('.pill-btn');
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const mode = btn.getAttribute('data-mode');
-      document.body.setAttribute('data-mode', mode === 'serene' ? '' : mode);
-      btns.forEach(b => {
-        b.className = 'pill-btn ' + (b === btn ? 'active' : 'inactive');
-      });
-    });
-  });
-}
 
 // ── CONTACT FORM ──────────────────────────────────
 function initForm(){
@@ -968,7 +945,6 @@ initReveal();
 initSvc();
 initTypewriter();
 initScroll();
-initTheme();
 initForm();
 
 });
