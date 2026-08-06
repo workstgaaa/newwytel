@@ -48,6 +48,20 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 .ftr-copy span{font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,0.35);}
 @media(max-width:900px){.ftr-inner{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.ftr-inner{grid-template-columns:1fr;}}
+
+/* === RESPONSIVE === */
+.hdr-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0;}
+.hdr-hamburger span{display:block;width:24px;height:2px;background:#333;border-radius:2px;transition:transform .3s,opacity .3s;}
+.mob-nav{display:none;position:fixed;top:68px;left:0;right:0;z-index:59;background:#fff;border-bottom:1px solid rgba(51,51,51,0.1);padding:8px 0;flex-direction:column;max-height:calc(100vh - 68px);overflow-y:auto;}
+.mob-nav.open{display:flex;}
+.mob-nav>a{padding:14px clamp(20px,4vw,40px);font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;letter-spacing:.16em;color:#333;text-decoration:none;border-bottom:1px solid rgba(51,51,51,0.05);display:block;}
+.mob-svc-label{padding:14px clamp(20px,4vw,40px);font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;letter-spacing:.16em;color:#333;border-bottom:1px solid rgba(51,51,51,0.05);}
+.mob-svc-sub>a{padding:11px clamp(20px,4vw,40px) 11px clamp(40px,7vw,64px);font-family:'Noto Sans JP',sans-serif;font-size:13px;letter-spacing:.04em;color:#5a5f6a;background:#f9fafb;display:block;text-decoration:none;border-bottom:1px solid rgba(51,51,51,0.05);}
+@media(max-width:768px){nav,.hdr-nav{display:none !important;}.hdr-hamburger{display:flex;}}
+@media(max-width:600px){
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr !important;}
+}
 </style>
 </head>
 <body>
@@ -72,8 +86,23 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
       <a href="index.html#recruit">RECRUIT</a>
       <a href="index.html#contact">CONTACT</a>
     </nav>
+    <button class="hdr-hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
+<div class="mob-nav" id="mob-nav">
+  <a href="index.html">HOME</a>
+  <div class="mob-svc-label">SERVICE</div>
+  <div class="mob-svc-sub">
+    <a href="service-se-pg.html">システムエンジニアリングサービス</a>
+    <a href="service-contract-development.html">受託開発</a>
+    <a href="service-support.html">サポート</a>
+    <a href="service-useware.html">ユースウェア</a>
+  </div>
+  <a href="about.html">ABOUT</a>
+  <a href="index.html#partner">PARTNER</a>
+  <a href="index.html#recruit">RECRUIT</a>
+  <a href="index.html#contact">CONTACT</a>
+</div>
 
 <button id="back-top">
   <svg viewBox="0 0 80 80" width="100" height="100" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;">
@@ -383,12 +412,45 @@ document.addEventListener('DOMContentLoaded', function(){
   window.addEventListener('scroll',scan,{passive:true});
 
   const bt = document.getElementById('back-top');
-  window.addEventListener('scroll', () => bt.classList.toggle('visible', window.scrollY > 300), {passive:true});
+  let btTimer;
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY > 300){
+      bt.classList.add('visible');
+      clearTimeout(btTimer);
+      btTimer = setTimeout(()=>bt.classList.remove('visible'), 2000);
+    } else {
+      bt.classList.remove('visible');
+      clearTimeout(btTimer);
+    }
+  },{passive:true});
   bt.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
   const navSvc=document.querySelector('.nav-svc'),svcDrop=document.querySelector('.svc-drop');
   let closeTimer;
   navSvc.addEventListener('mouseenter',()=>{clearTimeout(closeTimer);svcDrop.classList.add('open');});
   navSvc.addEventListener('mouseleave',()=>{closeTimer=setTimeout(()=>svcDrop.classList.remove('open'),150);});
+
+  // hamburger menu
+  const hamburger=document.querySelector('.hdr-hamburger');
+  const mobNav=document.getElementById('mob-nav');
+  if(hamburger&&mobNav){
+    hamburger.addEventListener('click',function(e){
+      e.stopPropagation();
+      const open=mobNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded',String(open));
+    });
+    document.addEventListener('click',function(e){
+      if(!mobNav.contains(e.target)&&!hamburger.contains(e.target)){
+        mobNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded','false');
+      }
+    });
+    mobNav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        mobNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded','false');
+      });
+    });
+  }
 });
 </script>
 </body>

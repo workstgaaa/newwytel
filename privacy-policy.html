@@ -369,7 +369,17 @@ document.addEventListener('DOMContentLoaded', function(){
   window.addEventListener('scroll',scan,{passive:true});
 
   const bt = document.getElementById('back-top');
-  window.addEventListener('scroll', () => bt.classList.toggle('visible', window.scrollY > 300), {passive:true});
+  let btTimer;
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY > 300){
+      bt.classList.add('visible');
+      clearTimeout(btTimer);
+      btTimer = setTimeout(()=>bt.classList.remove('visible'), 2000);
+    } else {
+      bt.classList.remove('visible');
+      clearTimeout(btTimer);
+    }
+  },{passive:true});
   bt.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 });
 </script>

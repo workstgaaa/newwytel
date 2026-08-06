@@ -225,6 +225,40 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
 #theme-pill{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:90;display:flex;align-items:center;gap:7px;background:rgba(51,51,51,0.94);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-radius:999px;padding:7px 9px 7px 16px;box-shadow:0 18px 44px -18px rgba(0,0,0,.55);}
 #theme-pill .pill-label{font-family:'Lato',sans-serif;font-size:10px;letter-spacing:.18em;color:#b8c6d8;}
 
+/* ── RESPONSIVE ──────────────────────── */
+.hdr-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:10px;flex-shrink:0;}
+.hdr-hamburger span{display:block;width:24px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform .3s,opacity .3s;}
+.mob-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:199;background:#fff;padding:72px 0 32px;flex-direction:column;overflow-y:auto;}
+.mob-nav.open{display:flex;}
+.mob-nav>a,.mob-svc-label{padding:16px clamp(24px,6vw,48px);font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;letter-spacing:.2em;color:#1a1a1a;text-decoration:none;border-bottom:1px solid rgba(51,51,51,0.06);display:block;}
+.mob-svc-sub>a{padding:12px clamp(24px,6vw,48px) 12px clamp(48px,10vw,80px);font-family:'Noto Sans JP',sans-serif;font-size:13px;letter-spacing:.06em;color:#5a5f6a;background:#f4f6f9;display:block;text-decoration:none;border-bottom:1px solid rgba(51,51,51,0.05);}
+.mob-nav-close{position:absolute;top:16px;right:20px;background:none;border:none;cursor:pointer;font-size:26px;color:#333;padding:8px;line-height:1;}
+@media(max-width:768px){
+  header{position:fixed;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(51,51,51,0.07);}
+  header .inner{display:flex;align-items:center;justify-content:space-between;padding:12px clamp(16px,4vw,32px);}
+  #side-nav{display:none !important;}
+  .hdr-hamburger{display:flex;}
+  #hero-content{padding-top:68px;padding-left:0;padding-right:0;padding-bottom:0;}
+  #hero-grid{display:flex;flex-direction:column;}
+  #hero-img-wrap{width:100%;min-height:clamp(200px,50vw,300px);border-radius:0;justify-self:unset;align-self:unset;-webkit-mask-image:none;mask-image:none;order:0;}
+  #hero-text{max-width:100%;padding:clamp(28px,6vw,48px) clamp(20px,5vw,40px);order:1;}
+  #hero-h1{white-space:normal;font-size:clamp(26px,7.5vw,40px);margin-top:8px;}
+  #hero-typed{font-size:clamp(13px,3.5vw,16px);margin-top:16px;line-height:1.8;}
+  #contact-head{text-align:left !important;}
+  .btn-dark{display:block;text-align:center;width:100%;max-width:320px;margin-left:auto;margin-right:auto;}
+  #svc-fallback-inner [data-reveal]:last-child{display:flex;justify-content:center;}
+  #recruit-body .btn-dark{align-self:center !important;}
+  #partner-body .btn-dark{display:block;margin-left:auto;margin-right:auto;}
+  #svc-scroll{display:none !important;}
+  #svc-fallback{display:block !important;}
+  #info-grid{grid-template-columns:1fr !important;}
+  .marquee-word{font-size:clamp(56px,18vw,120px);}
+  #footer-inner{grid-template-columns:1fr 1fr !important;}
+}
+@media(max-width:480px){
+  #footer-inner{grid-template-columns:1fr !important;}
+}
+
 /* ── PRIVACY MODAL ────────────────────── */
 #privacy-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;padding:24px;}
 #privacy-modal.open{display:flex;}
@@ -249,10 +283,30 @@ footer{background:#222;color:rgba(255,255,255,0.75);font-family:'Noto Sans JP',s
   <header>
     <div class="inner">
       <a href="#hero">
-        <img src="Wロゴ三角.png" alt="Wytel">
+        <img src="Wロゴ三角.png" alt="Wytel" style="height:44px;width:auto;display:block;">
       </a>
+      <button class="hdr-hamburger" id="mob-toggle" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mob-nav" id="mob-nav">
+    <button class="mob-nav-close" id="mob-close">✕</button>
+    <a href="#hero" class="mob-nav-link">HOME</a>
+    <span class="mob-svc-label">SERVICE</span>
+    <div class="mob-svc-sub">
+      <a href="service-se-pg.html">システムエンジニアリングサービス</a>
+      <a href="service-contract-development.html">受託開発</a>
+      <a href="service-support.html">サポート</a>
+      <a href="service-useware.html">ユースウェア</a>
+    </div>
+    <a href="#info" class="mob-nav-link">ABOUT</a>
+    <a href="#partner" class="mob-nav-link">PARTNER</a>
+    <a href="#recruit" class="mob-nav-link">RECRUIT</a>
+    <a href="#contact" class="mob-nav-link">CONTACT</a>
+  </div>
 
   <!-- VERTICAL NAV -->
   <nav id="side-nav">
@@ -932,9 +986,16 @@ function initTypewriter(){
 // ── SCROLL-BASED ──────────────────────────────────
 function initScroll(){
   const backTop = document.getElementById('back-top');
+  let scrollTimer;
   window.addEventListener('scroll', () => {
-    if(window.scrollY > 300) backTop.classList.add('visible');
-    else backTop.classList.remove('visible');
+    if(window.scrollY > 300){
+      backTop.classList.add('visible');
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => backTop.classList.remove('visible'), 2000);
+    } else {
+      backTop.classList.remove('visible');
+      clearTimeout(scrollTimer);
+    }
   }, { passive:true });
   backTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
 }
@@ -959,6 +1020,21 @@ function initForm(){
   });
 
 }
+
+// ── HAMBURGER ─────────────────────────────────────
+(function(){
+  const toggle = document.getElementById('mob-toggle');
+  const nav = document.getElementById('mob-nav');
+  const closeBtn = document.getElementById('mob-close');
+  function open(){ nav.classList.add('open'); document.body.style.overflow='hidden'; }
+  function close(){ nav.classList.remove('open'); document.body.style.overflow=''; }
+  toggle.addEventListener('click', () => nav.classList.contains('open') ? close() : open());
+  closeBtn.addEventListener('click', close);
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  document.addEventListener('click', e => {
+    if(nav.classList.contains('open') && !nav.contains(e.target) && !toggle.contains(e.target)) close();
+  });
+})();
 
 // ── INIT ──────────────────────────────────────────
 initReveal();
